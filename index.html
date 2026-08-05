@@ -198,6 +198,13 @@ border-radius: 3px;
 transition: background .25s ease, transform .25s ease;
 white-space: nowrap;
 }
+.nav-cta-sim{
+background: transparent;
+border: 1px solid var(--red-bright);
+color: var(--ink);
+margin-right: 10px;
+}
+a.nav-cta-sim:hover{ background: rgba(194,50,31,0.12); }
 .nav-cta:hover{ background: var(--red-bright); transform: translateY(-2px); }
 .burger{ display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px; }
 .burger span{ width:22px; height:2px; background: var(--ink); display:block; }
@@ -344,6 +351,26 @@ display:inline-flex; align-items:center; gap:10px;
 .btn-primary:hover{ background: var(--red-bright); transform: translateY(-2px); }
 .btn-ghost{ border: 1px solid var(--line-bright); color: var(--ink); }
 .btn-ghost:hover{ background: rgba(255,255,255,0.06); }
+.btn-simulator{
+position:relative;
+background: linear-gradient(135deg, var(--red) 0%, var(--red-bright) 100%);
+color:#fff;
+box-shadow: 0 0 0 0 rgba(194,50,31,0.6);
+animation: simPulse 2.2s ease-in-out infinite;
+}
+.btn-simulator:hover{ transform: translateY(-2px); filter: brightness(1.1); }
+.btn-simulator-badge{
+position:absolute; top:-9px; right:-10px;
+background:#fff; color:var(--red);
+font-family:'Space Mono',monospace; font-size:9px; font-weight:700;
+letter-spacing:.04em; padding:2px 6px; border-radius:999px;
+box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+@keyframes simPulse{
+0%{ box-shadow: 0 0 0 0 rgba(194,50,31,0.55); }
+70%{ box-shadow: 0 0 0 12px rgba(194,50,31,0); }
+100%{ box-shadow: 0 0 0 0 rgba(194,50,31,0); }
+}
 @keyframes rise{ from{opacity:0; transform:translateY(18px);} to{opacity:1; transform:translateY(0);} }
 .rep-counter{
 display:flex; justify-content:center; align-items:center; gap:22px;
@@ -772,6 +799,7 @@ font-size: 13px; color: var(--dimmer);
         <button class="lang-option" data-lang="it">Italiano</button>
       </div>
     </div>
+    <a href="repx-simulador.html" target="_blank" rel="noopener" class="nav-cta nav-cta-sim desktop-only" data-i18n="nav-cta-sim">Simulador</a>
     <a href="#contacto" class="nav-cta desktop-only" data-i18n="nav-cta">Pedir Catálogo</a>
     <button class="burger" id="burgerBtn" aria-label="Abrir menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -786,6 +814,7 @@ font-size: 13px; color: var(--dimmer);
   <a href="#mercados" data-i18n="nav-mercados">Mercados</a>
   <a href="#loja" data-i18n="nav-loja">Loja</a>
   <a href="#contacto" data-i18n="nav-contacto">Contacto</a>
+  <a href="repx-simulador.html" target="_blank" rel="noopener" class="nav-cta nav-cta-sim" style="text-align:center;" data-i18n="nav-cta-sim">Simulador</a>
   <a href="#contacto" class="nav-cta" style="text-align:center;" data-i18n="nav-cta">Pedir Catálogo</a>
   <div class="mobile-lang-row" id="mobileLangRow">
     <button class="active" data-lang="pt">PT</button>
@@ -809,6 +838,11 @@ font-size: 13px; color: var(--dimmer);
     <h1 class="headline">The Repetition<span class="line2">Mindset.</span></h1>
     <p class="subtext" data-i18n="hero-subtext">Vestuário construído para quem treina pela repetição — mais uma série, mais uma rep. Técnico, resistente e sem tretas. Feito em Portugal para atletas, boxes e equipas em toda a Europa.</p>
     <div class="hero-ctas">
+      <a href="repx-simulador.html" target="_blank" rel="noopener" class="btn btn-simulator">
+        <span class="btn-simulator-badge">NOVO</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:16px;height:16px;"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4"/></svg>
+        <span data-i18n="hero-cta-sim">Simulador</span>
+      </a>
       <a href="#contacto" class="btn btn-primary" data-i18n="hero-cta1">Catálogo B2B</a>
       <a href="#produtos" class="btn btn-ghost" data-i18n="hero-cta2">Ver Produtos</a>
     </div>
@@ -1226,6 +1260,8 @@ font-size: 13px; color: var(--dimmer);
     "nav-mercados": {pt:"Mercados", es:"Mercados", fr:"Marchés", de:"Märkte", it:"Mercati", en:"Markets"},
     "nav-contacto": {pt:"Contacto", es:"Contacto", fr:"Contact", de:"Kontakt", it:"Contatto", en:"Contact"},
     "nav-cta": {pt:"Pedir Catálogo", es:"Solicitar Catálogo", fr:"Demander le Catalogue", de:"Katalog Anfordern", it:"Richiedi Catalogo", en:"Request Catalog"},
+    "nav-cta-sim": {pt:"Simulador", es:"Simulador", fr:"Simulateur", de:"Simulator", it:"Simulatore", en:"Simulator"},
+    "hero-cta-sim": {pt:"Simulador", es:"Simulador", fr:"Simulateur", de:"Simulator", it:"Simulatore", en:"Simulator"},
 
     "hero-eyebrow": {pt:"Marca Portuguesa", es:"Marca Portuguesa", fr:"Marque Portugaise", de:"Portugiesische Marke", it:"Marchio Portoghese", en:"Portuguese Brand"},
     "hero-subtext": {
