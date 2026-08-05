@@ -25,9 +25,37 @@
     padding:20px 0;
   }
   header .wrap{ display:flex; align-items:center; justify-content:space-between; }
+  .header-right{ display:flex; align-items:center; gap:16px; }
   .logo{ font-family:'Black Ops One',sans-serif; font-size:20px; }
   .logo span{ color:var(--red-bright); }
   .header-sub{ font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.08em; color:var(--dim); text-transform:uppercase; }
+
+  .lang-switch{ position:relative; }
+  .lang-btn{
+    font-family:'Space Mono',monospace; font-size:12px; color:var(--dim);
+    background:transparent; border:1px solid var(--line-bright); border-radius:999px;
+    padding:7px 12px; cursor:pointer; display:flex; align-items:center; gap:6px;
+    transition:color .2s ease, border-color .2s ease;
+  }
+  .lang-btn:hover{ color:var(--ink); border-color:var(--red-bright); }
+  .lang-btn .caret{ font-size:9px; transform:translateY(1px); }
+  .lang-menu{
+    position:absolute; top:calc(100% + 8px); right:0;
+    background:var(--black2); border:1px solid var(--line-bright); border-radius:10px;
+    padding:6px; display:none; flex-direction:column; min-width:130px; z-index:60;
+    box-shadow:0 12px 30px rgba(0,0,0,0.4);
+  }
+  .lang-menu.open{ display:flex; }
+  .lang-option{
+    font-family:'Space Mono',monospace; font-size:12.5px; color:var(--dim);
+    background:none; border:none; text-align:left; padding:9px 10px; border-radius:6px;
+    cursor:pointer; transition:background .2s ease, color .2s ease;
+  }
+  .lang-option:hover{ background:rgba(255,255,255,0.06); color:var(--ink); }
+  .lang-option.active{ color:var(--ink); background:rgba(194,50,31,0.15); }
+  @media (max-width:600px){
+    .header-sub{ display:none; }
+  }
 
   .hero-title{ padding:36px 0 8px; }
   .hero-title h1{
@@ -192,17 +220,32 @@
 <header>
   <div class="wrap">
     <div class="logo"><img src="data:image/png;base64,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" alt="REPX" style="height:22px; width:auto; display:block;"></div>
-    <div class="header-sub">Simulador de Personalização</div>
+    <div class="header-right">
+      <div class="header-sub" data-i18n="headerSub">Simulador de Personalização</div>
+      <div class="lang-switch" id="langSwitch">
+        <button class="lang-btn" id="langBtn" type="button">
+          <span id="langBtnLabel">PT</span><span class="caret">▾</span>
+        </button>
+        <div class="lang-menu" id="langMenu">
+          <button class="lang-option active" data-lang="pt">Português</button>
+          <button class="lang-option" data-lang="en">English</button>
+          <button class="lang-option" data-lang="es">Español</button>
+          <button class="lang-option" data-lang="fr">Français</button>
+          <button class="lang-option" data-lang="de">Deutsch</button>
+          <button class="lang-option" data-lang="it">Italiano</button>
+        </div>
+      </div>
+    </div>
   </div>
 </header>
 
 <div class="wrap">
   <div class="hero-title">
-    <h1>Simula a tua estampagem</h1>
-    <p>Escolhe a cor, o tecido e a área de impressão, carrega a tua ilustração e posiciona-a na frente e nas costas. No final, gera a maquete e pede o orçamento.</p>
+    <h1 data-i18n="heroTitle">Simula a tua estampagem</h1>
+    <p data-i18n="heroDesc">Escolhe a cor, o tecido e a área de impressão, carrega a tua ilustração e posiciona-a na frente e nas costas. No final, gera a maquete e pede o orçamento.</p>
     <div class="warning-banner">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/></svg>
-      <p><strong>Aviso:</strong> esta maquete é apenas uma simulação visual de posicionamento e não tem qualidade para produção. Após aprovação do orçamento, é necessário enviar a ilustração final em alta qualidade (imagem em alta resolução e/ou ficheiro vetorial) para avançarmos com a impressão.</p>
+      <p><strong data-i18n="warningLabel">Aviso:</strong> <span data-i18n="warningText">esta maquete é apenas uma simulação visual de posicionamento e não tem qualidade para produção. Após aprovação do orçamento, é necessário enviar a ilustração final em alta qualidade (imagem em alta resolução e/ou ficheiro vetorial) para avançarmos com a impressão.</span></p>
     </div>
   </div>
 
@@ -210,74 +253,74 @@
     <div class="panel">
 
       <div>
-        <div class="group-label">Vista</div>
+        <div class="group-label" data-i18n="viewLabel">Vista</div>
         <div class="btn-row" id="viewBtns">
-          <button class="pill-btn active" data-view="front">Frente</button>
-          <button class="pill-btn" data-view="back">Costas</button>
-          <button class="pill-btn" data-view="sleeve">Manga (Lateral)</button>
+          <button class="pill-btn active" data-view="front" data-i18n="viewFront">Frente</button>
+          <button class="pill-btn" data-view="back" data-i18n="viewBack">Costas</button>
+          <button class="pill-btn" data-view="sleeve" data-i18n="viewSleeve">Manga (Lateral)</button>
         </div>
       </div>
 
       <div>
-        <div class="group-label">Tecido</div>
+        <div class="group-label" data-i18n="fabricLabel">Tecido</div>
         <div class="btn-row" id="fabricBtns">
-          <button class="pill-btn active" data-fabric="tecnico">Técnico</button>
-          <button class="pill-btn" data-fabric="algodao">Algodão</button>
-          <button class="pill-btn" data-fabric="triblend">Técnico Triblend</button>
+          <button class="pill-btn active" data-fabric="tecnico" data-i18n="fabricTecnico">Técnico</button>
+          <button class="pill-btn" data-fabric="algodao" data-i18n="fabricAlgodao">Algodão</button>
+          <button class="pill-btn" data-fabric="triblend" data-i18n="fabricTriblend">Técnico Triblend</button>
         </div>
       </div>
 
       <div>
-        <div class="group-label">Cor da T-Shirt</div>
+        <div class="group-label" data-i18n="colorLabel">Cor da T-Shirt</div>
         <div class="swatch-row" id="colorSwatches"></div>
         <div class="qty-note" id="colorFabricNote" style="display:none;"></div>
       </div>
 
       <div id="sizeSelectGroup">
-        <div class="group-label">Tamanho de Estampagem (<span id="viewLabel1">Frente</span>)</div>
+        <div class="group-label"><span data-i18n="sizeLabel">Tamanho de Estampagem</span> (<span id="viewLabel1">Frente</span>)</div>
         <select id="sizeSelect">
-          <option value="A5">A5 — 148 × 210 mm (peito/coração)</option>
-          <option value="A4">A4 — 210 × 297 mm (centro)</option>
-          <option value="A3" selected>A3 — 297 × 420 mm (centro)</option>
+          <option value="A5" data-i18n="sizeA5">A5 — 148 × 210 mm (peito/coração)</option>
+          <option value="A4" data-i18n="sizeA4">A4 — 210 × 297 mm (centro)</option>
+          <option value="A3" selected data-i18n="sizeA3">A3 — 297 × 420 mm (centro)</option>
         </select>
       </div>
       <div id="sleeveSizeNote" style="display:none;">
-        <div class="group-label">Tamanho de Estampagem (Manga)</div>
-        <div class="real-size-box" style="margin-top:0;">Área fixa — máx. 10 × 10 cm</div>
+        <div class="group-label"><span data-i18n="sizeLabel">Tamanho de Estampagem</span> (<span data-i18n="viewSleeveShort">Manga</span>)</div>
+        <div class="real-size-box" style="margin-top:0;" data-i18n="sleeveSizeFixed">Área fixa — máx. 10 × 10 cm</div>
       </div>
 
       <div>
-        <div class="group-label">Ilustração (<span id="viewLabel2">Frente</span>)</div>
+        <div class="group-label"><span data-i18n="illustrationLabel">Ilustração</span> (<span id="viewLabel2">Frente</span>)</div>
         <label class="upload-btn">
-          Carregar Imagem (máx. 500KB)
+          <span data-i18n="uploadBtn">Carregar Imagem (máx. 500KB)</span>
           <input type="file" id="fileInput" accept="image/*" hidden>
         </label>
         <div class="file-info" id="fileInfo"></div>
         <div class="file-error" id="fileError"></div>
         <div class="slider-row" style="margin-top:12px;">
-          <span style="font-family:'Space Mono',monospace;font-size:10.5px;color:var(--dimmer);">TAM.</span>
+          <span style="font-family:'Space Mono',monospace;font-size:10.5px;color:var(--dimmer);" data-i18n="scaleLabel">TAM.</span>
           <input type="range" id="scaleSlider" min="40" max="150" value="100">
           <span id="scaleLabel">100%</span>
         </div>
         <div class="slider-row" style="margin-top:10px;">
-          <span style="font-family:'Space Mono',monospace;font-size:10.5px;color:var(--dimmer);">ROD.</span>
+          <span style="font-family:'Space Mono',monospace;font-size:10.5px;color:var(--dimmer);" data-i18n="rotateLabel">ROD.</span>
           <input type="range" id="rotateSlider" min="-180" max="180" value="0">
           <span id="rotateLabel">0°</span>
         </div>
-        <div class="real-size-box" id="realSizeBox">Tamanho real da estampagem: —</div>
-        <button class="btn btn-ghost" id="removeArtBtn" style="margin-top:10px;">Remover Ilustração</button>
+        <div class="real-size-box" id="realSizeBox"><span data-i18n="realSizePrefix">Tamanho real da estampagem:</span> —</div>
+        <button class="btn btn-ghost" id="removeArtBtn" style="margin-top:10px;" data-i18n="removeBtn">Remover Ilustração</button>
       </div>
 
       <div>
-        <div class="group-label">Técnica de Impressão</div>
+        <div class="group-label" data-i18n="techniqueLabel">Técnica de Impressão</div>
         <div class="btn-row" id="techBtns">
-          <button class="pill-btn active" data-tech="dtf">DTF (mín. 10)</button>
-          <button class="pill-btn" data-tech="serigrafia">Serigrafia (mín. 50)</button>
+          <button class="pill-btn active" data-tech="dtf" data-i18n="techDTF">DTF (mín. 10)</button>
+          <button class="pill-btn" data-tech="serigrafia" data-i18n="techSeri">Serigrafia (mín. 50)</button>
         </div>
       </div>
 
       <div>
-        <div class="group-label">Quantidades por Tamanho</div>
+        <div class="group-label" data-i18n="qtyLabel">Quantidades por Tamanho</div>
         <div class="size-grid" id="sizeGrid">
           <div class="size-cell"><label>XS</label><input type="number" class="size-qty" data-size="XS" value="0" min="0"></div>
           <div class="size-cell"><label>S</label><input type="number" class="size-qty" data-size="S" value="0" min="0"></div>
@@ -290,18 +333,18 @@
       </div>
 
       <div>
-        <div class="group-label">Etiqueta Interior (Pescoço)</div>
+        <div class="group-label" data-i18n="neckTagLabel">Etiqueta Interior (Pescoço)</div>
         <div class="btn-row" id="neckTagBtns">
-          <button class="pill-btn active" data-necktag="no">Sem Etiqueta</button>
-          <button class="pill-btn" data-necktag="yes">Adicionar Etiqueta</button>
+          <button class="pill-btn active" data-necktag="no" data-i18n="neckTagNo">Sem Etiqueta</button>
+          <button class="pill-btn" data-necktag="yes" data-i18n="neckTagYes">Adicionar Etiqueta</button>
         </div>
         <div id="neckTagUploadWrap" style="display:none; margin-top:12px;">
           <label class="upload-btn">
-            Carregar Logotipo da Etiqueta
+            <span data-i18n="neckTagUploadBtn">Carregar Logotipo da Etiqueta</span>
             <input type="file" id="neckTagFileInput" accept="image/*" hidden>
           </label>
           <div class="file-info" id="neckTagFileInfo"></div>
-          <div class="qty-note">Etiqueta têxtil interior, até 10 × 10 cm. Posição fixa (interior da gola).</div>
+          <div class="qty-note" data-i18n="neckTagNote">Etiqueta têxtil interior, até 10 × 10 cm. Posição fixa (interior da gola).</div>
         </div>
       </div>
 
@@ -311,23 +354,23 @@
       <div class="canvas-wrap">
         <canvas id="simCanvas" width="1000" height="1000"></canvas>
       </div>
-      <div class="canvas-hint">Arrasta a ilustração para reposicionar dentro da área</div>
-      <div class="canvas-hint" style="color:var(--red-bright);">⚠ Maquete de simulação — não é ficheiro de produção</div>
+      <div class="canvas-hint" data-i18n="canvasHintDrag">Arrasta a ilustração para reposicionar dentro da área</div>
+      <div class="canvas-hint" style="color:var(--red-bright);" data-i18n="canvasHintWarning">⚠ Maquete de simulação — não é ficheiro de produção</div>
 
       <div class="summary">
-        <h3>Resumo do Pedido</h3>
-        <div class="summary-row"><span>Cor</span><span id="sumColor">Laranja Flúor</span></div>
-        <div class="summary-row"><span>Tecido</span><span id="sumFabric">Técnico</span></div>
-        <div class="summary-row"><span>Frente</span><span id="sumFront">Sem ilustração — A3</span></div>
-        <div class="summary-row"><span>Costas</span><span id="sumBack">Sem ilustração — A3</span></div>
-        <div class="summary-row"><span>Manga</span><span id="sumSleeve">Sem ilustração</span></div>
-        <div class="summary-row"><span>Etiqueta Pescoço</span><span id="sumNeckTag">Não</span></div>
-        <div class="summary-row"><span>Técnica</span><span id="sumTech">DTF</span></div>
-        <div class="summary-row"><span>Quantidade Total</span><span id="sumQty">10 unidades</span></div>
-        <div class="summary-row"><span>Por Tamanho</span><span id="sumSizes">M: 10</span></div>
+        <h3 data-i18n="summaryTitle">Resumo do Pedido</h3>
+        <div class="summary-row"><span data-i18n="sumColorLabel">Cor</span><span id="sumColor">Laranja Flúor</span></div>
+        <div class="summary-row"><span data-i18n="sumFabricLabel">Tecido</span><span id="sumFabric">Técnico</span></div>
+        <div class="summary-row"><span data-i18n="sumFrontLabel">Frente</span><span id="sumFront">Sem ilustração — A3</span></div>
+        <div class="summary-row"><span data-i18n="sumBackLabel">Costas</span><span id="sumBack">Sem ilustração — A3</span></div>
+        <div class="summary-row"><span data-i18n="sumSleeveLabel">Manga</span><span id="sumSleeve">Sem ilustração</span></div>
+        <div class="summary-row"><span data-i18n="sumNeckTagLabel">Etiqueta Pescoço</span><span id="sumNeckTag">Não</span></div>
+        <div class="summary-row"><span data-i18n="sumTechLabel">Técnica</span><span id="sumTech">DTF</span></div>
+        <div class="summary-row"><span data-i18n="sumQtyLabel">Quantidade Total</span><span id="sumQty">10 unidades</span></div>
+        <div class="summary-row"><span data-i18n="sumSizesLabel">Por Tamanho</span><span id="sumSizes">M: 10</span></div>
         <div class="summary-actions">
-          <button class="btn btn-ghost" id="generateBtn">Gerar Maquete</button>
-          <button class="btn btn-primary" id="quoteBtn">Pedir Orçamento</button>
+          <button class="btn btn-ghost" id="generateBtn" data-i18n="generateBtn">Gerar Maquete</button>
+          <button class="btn btn-primary" id="quoteBtn" data-i18n="quoteBtn">Pedir Orçamento</button>
         </div>
       </div>
     </div>
@@ -349,23 +392,275 @@
     algodao:  ['preto','branco','amarelo_normal','vermelho','bordeaux','laranja_normal','azul_real'],
     triblend: ['branco','preto','cinza_escuro','verde_escuro','bordeaux']
   };
-  const COLOR_META = {
-    laranja:      { label: 'Laranja Flúor', hex: '#ff6a00' },
-    amarelo:      { label: 'Amarelo Flúor', hex: '#eaff00' },
-    preto:        { label: 'Preto',         hex: '#101010' },
-    branco:       { label: 'Branco',        hex: '#f5f5f5' },
-    navy:         { label: 'Azul Navy',     hex: '#0f1a3d' },
-    vermelho:     { label: 'Vermelho',      hex: '#c81f1f' },
-    verde_lima:   { label: 'Verde Lima',    hex: '#8fd400' },
-    verde_escuro: { label: 'Verde Escuro',  hex: '#1f4a2e' },
-    cinza_escuro: { label: 'Cinza Escuro',  hex: '#3a3a3d' },
-    bordeaux:     { label: 'Bordeaux',      hex: '#5a0f1a' },
-    amarelo_normal: { label: 'Amarelo',     hex: '#c9a000' },
-    laranja_normal: { label: 'Laranja',     hex: '#a54b0f' },
-    azul_real:      { label: 'Azul Real',   hex: '#1c3fc8' }
+  const COLOR_HEX = {
+    laranja:'#ff6a00', amarelo:'#eaff00', preto:'#101010', branco:'#f5f5f5',
+    navy:'#0f1a3d', vermelho:'#c81f1f', verde_lima:'#8fd400', verde_escuro:'#1f4a2e',
+    cinza_escuro:'#3a3a3d', bordeaux:'#5a0f1a', amarelo_normal:'#c9a000',
+    laranja_normal:'#a54b0f', azul_real:'#1c3fc8'
   };
-  const FABRIC_NAMES = { tecnico:'Técnico', algodao:'Algodão (100%)', triblend:'Técnico Triblend' };
+  const COLOR_LABELS = {
+    pt: { laranja:'Laranja Flúor', amarelo:'Amarelo Flúor', preto:'Preto', branco:'Branco', navy:'Azul Navy', vermelho:'Vermelho', verde_lima:'Verde Lima', verde_escuro:'Verde Escuro', cinza_escuro:'Cinza Escuro', bordeaux:'Bordeaux', amarelo_normal:'Amarelo', laranja_normal:'Laranja', azul_real:'Azul Real' },
+    en: { laranja:'Neon Orange', amarelo:'Neon Yellow', preto:'Black', branco:'White', navy:'Navy Blue', vermelho:'Red', verde_lima:'Lime Green', verde_escuro:'Dark Green', cinza_escuro:'Dark Grey', bordeaux:'Burgundy', amarelo_normal:'Yellow', laranja_normal:'Orange', azul_real:'Royal Blue' },
+    es: { laranja:'Naranja Flúor', amarelo:'Amarillo Flúor', preto:'Negro', branco:'Blanco', navy:'Azul Marino', vermelho:'Rojo', verde_lima:'Verde Lima', verde_escuro:'Verde Oscuro', cinza_escuro:'Gris Oscuro', bordeaux:'Burdeos', amarelo_normal:'Amarillo', laranja_normal:'Naranja', azul_real:'Azul Real' },
+    fr: { laranja:'Orange Fluo', amarelo:'Jaune Fluo', preto:'Noir', branco:'Blanc', navy:'Bleu Marine', vermelho:'Rouge', verde_lima:'Vert Citron', verde_escuro:'Vert Foncé', cinza_escuro:'Gris Foncé', bordeaux:'Bordeaux', amarelo_normal:'Jaune', laranja_normal:'Orange', azul_real:'Bleu Roi' },
+    de: { laranja:'Neonorange', amarelo:'Neongelb', preto:'Schwarz', branco:'Weiß', navy:'Marineblau', vermelho:'Rot', verde_lima:'Limettengrün', verde_escuro:'Dunkelgrün', cinza_escuro:'Dunkelgrau', bordeaux:'Bordeaux', amarelo_normal:'Gelb', laranja_normal:'Orange', azul_real:'Königsblau' },
+    it: { laranja:'Arancione Fluo', amarelo:'Giallo Fluo', preto:'Nero', branco:'Bianco', navy:'Blu Navy', vermelho:'Rosso', verde_lima:'Verde Lime', verde_escuro:'Verde Scuro', cinza_escuro:'Grigio Scuro', bordeaux:'Bordeaux', amarelo_normal:'Giallo', laranja_normal:'Arancione', azul_real:'Blu Reale' }
+  };
+  const FABRIC_LABELS = {
+    pt: { tecnico:'Técnico', algodao:'Algodão (100%)', triblend:'Técnico Triblend' },
+    en: { tecnico:'Technical', algodao:'Cotton (100%)', triblend:'Technical Triblend' },
+    es: { tecnico:'Técnico', algodao:'Algodón (100%)', triblend:'Técnico Triblend' },
+    fr: { tecnico:'Technique', algodao:'Coton (100%)', triblend:'Technique Triblend' },
+    de: { tecnico:'Technisch', algodao:'Baumwolle (100%)', triblend:'Technisches Triblend' },
+    it: { tecnico:'Tecnico', algodao:'Cotone (100%)', triblend:'Tecnico Triblend' }
+  };
   const SIZE_LIST = ['XS','S','M','L','XL','XXL'];
+
+  let currentLang = 'pt';
+  function T(key){ return TRANSLATIONS[currentLang][key]; }
+
+  const TRANSLATIONS = {
+    pt: {
+      headerSub:'Simulador de Personalização',
+      heroTitle:'Simula a tua estampagem',
+      heroDesc:'Escolhe a cor, o tecido e a área de impressão, carrega a tua ilustração e posiciona-a na frente e nas costas. No final, gera a maquete e pede o orçamento.',
+      warningLabel:'Aviso:',
+      warningText:'esta maquete é apenas uma simulação visual de posicionamento e não tem qualidade para produção. Após aprovação do orçamento, é necessário enviar a ilustração final em alta qualidade (imagem em alta resolução e/ou ficheiro vetorial) para avançarmos com a impressão.',
+      viewLabel:'Vista', viewFront:'Frente', viewBack:'Costas', viewSleeve:'Manga (Lateral)', viewSleeveShort:'Manga',
+      fabricLabel:'Tecido', fabricTecnico:'Técnico', fabricAlgodao:'Algodão', fabricTriblend:'Técnico Triblend',
+      colorLabel:'Cor da T-Shirt',
+      colorNoteAlgodao:'O tecido Algodão não tem opção fluorescente.',
+      sizeLabel:'Tamanho de Estampagem',
+      sizeA5:'A5 — 148 × 210 mm (peito/coração)', sizeA4:'A4 — 210 × 297 mm (centro)', sizeA3:'A3 — 297 × 420 mm (centro)',
+      sleeveSizeFixed:'Área fixa — máx. 10 × 10 cm',
+      illustrationLabel:'Ilustração', uploadBtn:'Carregar Imagem (máx. 500KB)',
+      scaleLabel:'TAM.', rotateLabel:'ROD.', realSizePrefix:'Tamanho real da estampagem:',
+      removeBtn:'Remover Ilustração',
+      techniqueLabel:'Técnica de Impressão', techDTF:'DTF (mín. 10)', techSeri:'Serigrafia (mín. 50)',
+      qtyLabel:'Quantidades por Tamanho',
+      neckTagLabel:'Etiqueta Interior (Pescoço)', neckTagNo:'Sem Etiqueta', neckTagYes:'Adicionar Etiqueta',
+      neckTagUploadBtn:'Carregar Logotipo da Etiqueta',
+      neckTagNote:'Etiqueta têxtil interior, até 10 × 10 cm. Posição fixa (interior da gola).',
+      canvasHintDrag:'Arrasta a ilustração para reposicionar dentro da área',
+      canvasHintWarning:'⚠ Maquete de simulação — não é ficheiro de produção',
+      summaryTitle:'Resumo do Pedido',
+      sumColorLabel:'Cor', sumFabricLabel:'Tecido', sumFrontLabel:'Frente', sumBackLabel:'Costas', sumSleeveLabel:'Manga',
+      sumNeckTagLabel:'Etiqueta Pescoço', sumTechLabel:'Técnica', sumQtyLabel:'Quantidade Total', sumSizesLabel:'Por Tamanho',
+      generateBtn:'Gerar Maquete', quoteBtn:'Pedir Orçamento',
+      noIllustration:'Sem ilustração', neckTagYesPrefix:'Sim —', neckTagMax:'(máx. 10cm)', noFile:'sem ficheiro',
+      noSizesSet:'Sem unidades definidas', unitsWord:'unidades', totalWord:'Total:', minWord:'mínimo', minForWord:'unidades para',
+      não:'Não',
+      quoteSubject:'Pedido de Orçamento — Personalização REPX',
+      quoteTitle:'Pedido de orçamento — Personalização REPX',
+      quoteColor:'Cor da t-shirt:', quoteFabric:'Tecido:', quoteTech:'Técnica de impressão:', quoteQty:'Quantidade total:',
+      quoteBySize:'Por tamanho:', quoteNotDefined:'não definido', quoteNoIllustration:'sem ilustração',
+      quoteMaxArea:'área máxima', quoteRealSize:'tamanho real da estampagem:', quoteRotation:'rotação:',
+      quoteNeckTag:'Etiqueta interior (pescoço):', quoteNoFileWaiting:'sem ficheiro, aguarda especificação',
+      quoteAttachNote:'Nota: por favor anexa a este email as maquetes descarregadas (botão "Gerar Maquete") antes de enviar.',
+      quoteWarning:'AVISO: as maquetes geradas por este simulador servem apenas para validar o posicionamento e não têm qualidade de produção. Após aprovação do orçamento, será necessário enviar a(s) ilustração(ões) final(is) em alta resolução e/ou em formato vetorial para avançarmos com a impressão.',
+      mockupWatermark:'REPX — MAQUETE SIMULADA · SEM QUALIDADE DE PRODUÇÃO'
+    },
+    en: {
+      headerSub:'Personalization Simulator',
+      heroTitle:'Simulate your print',
+      heroDesc:'Choose the color, fabric and print area, upload your artwork and position it on the front and back. At the end, generate the mockup and request a quote.',
+      warningLabel:'Notice:',
+      warningText:'this mockup is only a visual positioning simulation and is not production quality. Once the quote is approved, you must send the final artwork in high quality (high-resolution image and/or vector file) to move forward with printing.',
+      viewLabel:'View', viewFront:'Front', viewBack:'Back', viewSleeve:'Sleeve (Side)', viewSleeveShort:'Sleeve',
+      fabricLabel:'Fabric', fabricTecnico:'Technical', fabricAlgodao:'Cotton', fabricTriblend:'Technical Triblend',
+      colorLabel:'T-Shirt Color',
+      colorNoteAlgodao:'Cotton fabric has no fluorescent option.',
+      sizeLabel:'Print Size',
+      sizeA5:'A5 — 148 × 210 mm (chest/heart)', sizeA4:'A4 — 210 × 297 mm (center)', sizeA3:'A3 — 297 × 420 mm (center)',
+      sleeveSizeFixed:'Fixed area — max. 10 × 10 cm',
+      illustrationLabel:'Artwork', uploadBtn:'Upload Image (max. 500KB)',
+      scaleLabel:'SIZE', rotateLabel:'ROT.', realSizePrefix:'Actual print size:',
+      removeBtn:'Remove Artwork',
+      techniqueLabel:'Printing Technique', techDTF:'DTF (min. 10)', techSeri:'Screen Printing (min. 50)',
+      qtyLabel:'Quantities by Size',
+      neckTagLabel:'Inner Neck Label', neckTagNo:'No Label', neckTagYes:'Add Label',
+      neckTagUploadBtn:'Upload Label Logo',
+      neckTagNote:'Inner fabric label, up to 10 × 10 cm. Fixed position (inside the collar).',
+      canvasHintDrag:'Drag the artwork to reposition it within the area',
+      canvasHintWarning:'⚠ Simulated mockup — not a production file',
+      summaryTitle:'Order Summary',
+      sumColorLabel:'Color', sumFabricLabel:'Fabric', sumFrontLabel:'Front', sumBackLabel:'Back', sumSleeveLabel:'Sleeve',
+      sumNeckTagLabel:'Neck Label', sumTechLabel:'Technique', sumQtyLabel:'Total Quantity', sumSizesLabel:'By Size',
+      generateBtn:'Generate Mockup', quoteBtn:'Request Quote',
+      noIllustration:'No artwork', neckTagYesPrefix:'Yes —', neckTagMax:'(max. 10cm)', noFile:'no file',
+      noSizesSet:'No units defined', unitsWord:'units', totalWord:'Total:', minWord:'minimum', minForWord:'units for',
+      não:'No',
+      quoteSubject:'Quote Request — REPX Customization',
+      quoteTitle:'Quote request — REPX Customization',
+      quoteColor:'T-shirt color:', quoteFabric:'Fabric:', quoteTech:'Printing technique:', quoteQty:'Total quantity:',
+      quoteBySize:'By size:', quoteNotDefined:'not defined', quoteNoIllustration:'no artwork',
+      quoteMaxArea:'maximum area', quoteRealSize:'actual print size:', quoteRotation:'rotation:',
+      quoteNeckTag:'Inner neck label:', quoteNoFileWaiting:'no file, awaiting specification',
+      quoteAttachNote:'Note: please attach the downloaded mockups (via the "Generate Mockup" button) to this email before sending.',
+      quoteWarning:'NOTICE: the mockups generated by this simulator are only for validating positioning and are not production quality. Once the quote is approved, you will need to send the final artwork in high resolution and/or vector format to proceed with printing.',
+      mockupWatermark:'REPX — SIMULATED MOCKUP · NOT PRODUCTION QUALITY'
+    },
+    es: {
+      headerSub:'Simulador de Personalización',
+      heroTitle:'Simula tu estampado',
+      heroDesc:'Elige el color, el tejido y el área de impresión, sube tu ilustración y colócala en la parte delantera y trasera. Al final, genera la maqueta y pide el presupuesto.',
+      warningLabel:'Aviso:',
+      warningText:'esta maqueta es solo una simulación visual de posicionamiento y no tiene calidad de producción. Tras la aprobación del presupuesto, es necesario enviar la ilustración final en alta calidad (imagen en alta resolución y/o archivo vectorial) para avanzar con la impresión.',
+      viewLabel:'Vista', viewFront:'Frente', viewBack:'Espalda', viewSleeve:'Manga (Lateral)', viewSleeveShort:'Manga',
+      fabricLabel:'Tejido', fabricTecnico:'Técnico', fabricAlgodao:'Algodón', fabricTriblend:'Técnico Triblend',
+      colorLabel:'Color de la Camiseta',
+      colorNoteAlgodao:'El tejido de algodón no tiene opción flúor.',
+      sizeLabel:'Tamaño de Estampado',
+      sizeA5:'A5 — 148 × 210 mm (pecho/corazón)', sizeA4:'A4 — 210 × 297 mm (centro)', sizeA3:'A3 — 297 × 420 mm (centro)',
+      sleeveSizeFixed:'Área fija — máx. 10 × 10 cm',
+      illustrationLabel:'Ilustración', uploadBtn:'Subir Imagen (máx. 500KB)',
+      scaleLabel:'TAM.', rotateLabel:'ROT.', realSizePrefix:'Tamaño real del estampado:',
+      removeBtn:'Eliminar Ilustración',
+      techniqueLabel:'Técnica de Impresión', techDTF:'DTF (mín. 10)', techSeri:'Serigrafía (mín. 50)',
+      qtyLabel:'Cantidades por Talla',
+      neckTagLabel:'Etiqueta Interior (Cuello)', neckTagNo:'Sin Etiqueta', neckTagYes:'Añadir Etiqueta',
+      neckTagUploadBtn:'Subir Logo de la Etiqueta',
+      neckTagNote:'Etiqueta textil interior, hasta 10 × 10 cm. Posición fija (interior del cuello).',
+      canvasHintDrag:'Arrastra la ilustración para reposicionarla dentro del área',
+      canvasHintWarning:'⚠ Maqueta simulada — no es archivo de producción',
+      summaryTitle:'Resumen del Pedido',
+      sumColorLabel:'Color', sumFabricLabel:'Tejido', sumFrontLabel:'Frente', sumBackLabel:'Espalda', sumSleeveLabel:'Manga',
+      sumNeckTagLabel:'Etiqueta Cuello', sumTechLabel:'Técnica', sumQtyLabel:'Cantidad Total', sumSizesLabel:'Por Talla',
+      generateBtn:'Generar Maqueta', quoteBtn:'Pedir Presupuesto',
+      noIllustration:'Sin ilustración', neckTagYesPrefix:'Sí —', neckTagMax:'(máx. 10cm)', noFile:'sin archivo',
+      noSizesSet:'Sin unidades definidas', unitsWord:'unidades', totalWord:'Total:', minWord:'mínimo', minForWord:'unidades para',
+      não:'No',
+      quoteSubject:'Solicitud de Presupuesto — Personalización REPX',
+      quoteTitle:'Solicitud de presupuesto — Personalización REPX',
+      quoteColor:'Color de la camiseta:', quoteFabric:'Tejido:', quoteTech:'Técnica de impresión:', quoteQty:'Cantidad total:',
+      quoteBySize:'Por talla:', quoteNotDefined:'no definido', quoteNoIllustration:'sin ilustración',
+      quoteMaxArea:'área máxima', quoteRealSize:'tamaño real del estampado:', quoteRotation:'rotación:',
+      quoteNeckTag:'Etiqueta interior (cuello):', quoteNoFileWaiting:'sin archivo, a la espera de especificación',
+      quoteAttachNote:'Nota: por favor adjunta a este email las maquetas descargadas (botón "Generar Maqueta") antes de enviar.',
+      quoteWarning:'AVISO: las maquetas generadas por este simulador sirven solo para validar el posicionamiento y no tienen calidad de producción. Tras la aprobación del presupuesto, será necesario enviar la(s) ilustración(es) final(es) en alta resolución y/o formato vectorial para proceder con la impresión.',
+      mockupWatermark:'REPX — MAQUETA SIMULADA · SIN CALIDAD DE PRODUCCIÓN'
+    },
+    fr: {
+      headerSub:'Simulateur de Personnalisation',
+      heroTitle:'Simule ton marquage',
+      heroDesc:"Choisis la couleur, le tissu et la zone d'impression, télécharge ton illustration et positionne-la à l'avant et à l'arrière. À la fin, génère la maquette et demande le devis.",
+      warningLabel:'Avertissement :',
+      warningText:"cette maquette n'est qu'une simulation visuelle de positionnement et n'a pas la qualité de production. Après approbation du devis, il est nécessaire d'envoyer l'illustration finale en haute qualité (image haute résolution et/ou fichier vectoriel) pour avancer avec l'impression.",
+      viewLabel:'Vue', viewFront:'Avant', viewBack:'Arrière', viewSleeve:'Manche (Côté)', viewSleeveShort:'Manche',
+      fabricLabel:'Tissu', fabricTecnico:'Technique', fabricAlgodao:'Coton', fabricTriblend:'Technique Triblend',
+      colorLabel:'Couleur du T-Shirt',
+      colorNoteAlgodao:"Le tissu coton n'a pas d'option fluo.",
+      sizeLabel:"Taille d'Impression",
+      sizeA5:'A5 — 148 × 210 mm (poitrine/cœur)', sizeA4:'A4 — 210 × 297 mm (centre)', sizeA3:'A3 — 297 × 420 mm (centre)',
+      sleeveSizeFixed:'Zone fixe — max. 10 × 10 cm',
+      illustrationLabel:'Illustration', uploadBtn:'Télécharger Image (max. 500KB)',
+      scaleLabel:'TAILLE', rotateLabel:'ROT.', realSizePrefix:"Taille réelle de l'impression :",
+      removeBtn:"Retirer l'Illustration",
+      techniqueLabel:"Technique d'Impression", techDTF:'DTF (min. 10)', techSeri:'Sérigraphie (min. 50)',
+      qtyLabel:'Quantités par Taille',
+      neckTagLabel:'Étiquette Intérieure (Col)', neckTagNo:"Sans Étiquette", neckTagYes:'Ajouter Étiquette',
+      neckTagUploadBtn:"Télécharger le Logo de l'Étiquette",
+      neckTagNote:"Étiquette textile intérieure, jusqu'à 10 × 10 cm. Position fixe (intérieur du col).",
+      canvasHintDrag:"Fais glisser l'illustration pour la repositionner dans la zone",
+      canvasHintWarning:'⚠ Maquette simulée — pas un fichier de production',
+      summaryTitle:'Résumé de la Commande',
+      sumColorLabel:'Couleur', sumFabricLabel:'Tissu', sumFrontLabel:'Avant', sumBackLabel:'Arrière', sumSleeveLabel:'Manche',
+      sumNeckTagLabel:'Étiquette Col', sumTechLabel:'Technique', sumQtyLabel:'Quantité Totale', sumSizesLabel:'Par Taille',
+      generateBtn:'Générer la Maquette', quoteBtn:'Demander un Devis',
+      noIllustration:'Sans illustration', neckTagYesPrefix:'Oui —', neckTagMax:'(max. 10cm)', noFile:'sans fichier',
+      noSizesSet:'Aucune unité définie', unitsWord:'unités', totalWord:'Total :', minWord:'minimum', minForWord:'unités pour',
+      não:'Non',
+      quoteSubject:'Demande de Devis — Personnalisation REPX',
+      quoteTitle:'Demande de devis — Personnalisation REPX',
+      quoteColor:'Couleur du t-shirt :', quoteFabric:'Tissu :', quoteTech:"Technique d'impression :", quoteQty:'Quantité totale :',
+      quoteBySize:'Par taille :', quoteNotDefined:'non défini', quoteNoIllustration:'sans illustration',
+      quoteMaxArea:'zone maximale', quoteRealSize:"taille réelle de l'impression :", quoteRotation:'rotation :',
+      quoteNeckTag:'Étiquette intérieure (col) :', quoteNoFileWaiting:'sans fichier, en attente de spécification',
+      quoteAttachNote:'Remarque : merci de joindre à cet email les maquettes téléchargées (bouton "Générer la Maquette") avant d\'envoyer.',
+      quoteWarning:"AVERTISSEMENT : les maquettes générées par ce simulateur servent uniquement à valider le positionnement et n'ont pas la qualité de production. Après approbation du devis, il faudra envoyer l'illustration finale en haute résolution et/ou au format vectoriel pour procéder à l'impression.",
+      mockupWatermark:'REPX — MAQUETTE SIMULÉE · PAS DE QUALITÉ DE PRODUCTION'
+    },
+    de: {
+      headerSub:'Personalisierungs-Simulator',
+      heroTitle:'Simuliere deinen Druck',
+      heroDesc:'Wähle Farbe, Stoff und Druckbereich, lade deine Illustration hoch und positioniere sie vorne und hinten. Am Ende erstellst du das Mockup und forderst ein Angebot an.',
+      warningLabel:'Hinweis:',
+      warningText:'dieses Mockup ist nur eine visuelle Positionierungssimulation und hat keine Produktionsqualität. Nach Angebotsfreigabe muss die finale Illustration in hoher Qualität (hochauflösendes Bild und/oder Vektordatei) gesendet werden, um mit dem Druck fortzufahren.',
+      viewLabel:'Ansicht', viewFront:'Vorne', viewBack:'Hinten', viewSleeve:'Ärmel (Seite)', viewSleeveShort:'Ärmel',
+      fabricLabel:'Stoff', fabricTecnico:'Technisch', fabricAlgodao:'Baumwolle', fabricTriblend:'Technisches Triblend',
+      colorLabel:'T-Shirt-Farbe',
+      colorNoteAlgodao:'Baumwollstoff hat keine Neon-Option.',
+      sizeLabel:'Druckgröße',
+      sizeA5:'A5 — 148 × 210 mm (Brust/Herz)', sizeA4:'A4 — 210 × 297 mm (Mitte)', sizeA3:'A3 — 297 × 420 mm (Mitte)',
+      sleeveSizeFixed:'Fester Bereich — max. 10 × 10 cm',
+      illustrationLabel:'Illustration', uploadBtn:'Bild hochladen (max. 500KB)',
+      scaleLabel:'GRÖSSE', rotateLabel:'DREH.', realSizePrefix:'Tatsächliche Druckgröße:',
+      removeBtn:'Illustration entfernen',
+      techniqueLabel:'Drucktechnik', techDTF:'DTF (min. 10)', techSeri:'Siebdruck (min. 50)',
+      qtyLabel:'Mengen nach Größe',
+      neckTagLabel:'Inneres Nacken-Etikett', neckTagNo:'Kein Etikett', neckTagYes:'Etikett hinzufügen',
+      neckTagUploadBtn:'Etikett-Logo hochladen',
+      neckTagNote:'Inneres Stoffetikett, bis zu 10 × 10 cm. Feste Position (Innenseite des Kragens).',
+      canvasHintDrag:'Ziehe die Illustration, um sie im Bereich neu zu positionieren',
+      canvasHintWarning:'⚠ Simuliertes Mockup — keine Produktionsdatei',
+      summaryTitle:'Bestellübersicht',
+      sumColorLabel:'Farbe', sumFabricLabel:'Stoff', sumFrontLabel:'Vorne', sumBackLabel:'Hinten', sumSleeveLabel:'Ärmel',
+      sumNeckTagLabel:'Nacken-Etikett', sumTechLabel:'Technik', sumQtyLabel:'Gesamtmenge', sumSizesLabel:'Nach Größe',
+      generateBtn:'Mockup erstellen', quoteBtn:'Angebot anfordern',
+      noIllustration:'Keine Illustration', neckTagYesPrefix:'Ja —', neckTagMax:'(max. 10cm)', noFile:'keine Datei',
+      noSizesSet:'Keine Einheiten festgelegt', unitsWord:'Einheiten', totalWord:'Gesamt:', minWord:'mindestens', minForWord:'Einheiten für',
+      não:'Nein',
+      quoteSubject:'Angebotsanfrage — REPX Personalisierung',
+      quoteTitle:'Angebotsanfrage — REPX Personalisierung',
+      quoteColor:'T-Shirt-Farbe:', quoteFabric:'Stoff:', quoteTech:'Drucktechnik:', quoteQty:'Gesamtmenge:',
+      quoteBySize:'Nach Größe:', quoteNotDefined:'nicht festgelegt', quoteNoIllustration:'keine Illustration',
+      quoteMaxArea:'maximaler Bereich', quoteRealSize:'tatsächliche Druckgröße:', quoteRotation:'Drehung:',
+      quoteNeckTag:'Inneres Nacken-Etikett:', quoteNoFileWaiting:'keine Datei, wartet auf Spezifikation',
+      quoteAttachNote:'Hinweis: bitte füge diesem Email die heruntergeladenen Mockups (Button "Mockup erstellen") an, bevor du es sendest.',
+      quoteWarning:'HINWEIS: die von diesem Simulator erstellten Mockups dienen nur zur Validierung der Positionierung und haben keine Produktionsqualität. Nach Angebotsfreigabe muss die finale Illustration in hoher Auflösung und/oder im Vektorformat gesendet werden, um mit dem Druck fortzufahren.',
+      mockupWatermark:'REPX — SIMULIERTES MOCKUP · KEINE PRODUKTIONSQUALITÄT'
+    },
+    it: {
+      headerSub:'Simulatore di Personalizzazione',
+      heroTitle:'Simula la tua stampa',
+      heroDesc:"Scegli il colore, il tessuto e l'area di stampa, carica la tua illustrazione e posizionala sul davanti e sul retro. Alla fine, genera il mockup e richiedi il preventivo.",
+      warningLabel:'Avviso:',
+      warningText:'questo mockup è solo una simulazione visiva di posizionamento e non ha qualità di produzione. Dopo l\'approvazione del preventivo, è necessario inviare l\'illustrazione finale in alta qualità (immagine ad alta risoluzione e/o file vettoriale) per procedere con la stampa.',
+      viewLabel:'Vista', viewFront:'Fronte', viewBack:'Retro', viewSleeve:'Manica (Laterale)', viewSleeveShort:'Manica',
+      fabricLabel:'Tessuto', fabricTecnico:'Tecnico', fabricAlgodao:'Cotone', fabricTriblend:'Tecnico Triblend',
+      colorLabel:'Colore della Maglietta',
+      colorNoteAlgodao:'Il tessuto in cotone non ha opzione fluo.',
+      sizeLabel:'Dimensione di Stampa',
+      sizeA5:'A5 — 148 × 210 mm (petto/cuore)', sizeA4:'A4 — 210 × 297 mm (centro)', sizeA3:'A3 — 297 × 420 mm (centro)',
+      sleeveSizeFixed:'Area fissa — max. 10 × 10 cm',
+      illustrationLabel:'Illustrazione', uploadBtn:'Carica Immagine (max. 500KB)',
+      scaleLabel:'DIM.', rotateLabel:'ROT.', realSizePrefix:'Dimensione reale della stampa:',
+      removeBtn:"Rimuovi Illustrazione",
+      techniqueLabel:'Tecnica di Stampa', techDTF:'DTF (min. 10)', techSeri:'Serigrafia (min. 50)',
+      qtyLabel:'Quantità per Taglia',
+      neckTagLabel:'Etichetta Interna (Collo)', neckTagNo:'Senza Etichetta', neckTagYes:'Aggiungi Etichetta',
+      neckTagUploadBtn:"Carica Logo dell'Etichetta",
+      neckTagNote:"Etichetta tessile interna, fino a 10 × 10 cm. Posizione fissa (interno del collo).",
+      canvasHintDrag:"Trascina l'illustrazione per riposizionarla nell'area",
+      canvasHintWarning:'⚠ Mockup simulato — non è un file di produzione',
+      summaryTitle:'Riepilogo Ordine',
+      sumColorLabel:'Colore', sumFabricLabel:'Tessuto', sumFrontLabel:'Fronte', sumBackLabel:'Retro', sumSleeveLabel:'Manica',
+      sumNeckTagLabel:'Etichetta Collo', sumTechLabel:'Tecnica', sumQtyLabel:'Quantità Totale', sumSizesLabel:'Per Taglia',
+      generateBtn:'Genera Mockup', quoteBtn:'Richiedi Preventivo',
+      noIllustration:'Senza illustrazione', neckTagYesPrefix:'Sì —', neckTagMax:'(max. 10cm)', noFile:'senza file',
+      noSizesSet:'Nessuna unità definita', unitsWord:'unità', totalWord:'Totale:', minWord:'minimo', minForWord:'unità per',
+      não:'No',
+      quoteSubject:'Richiesta di Preventivo — Personalizzazione REPX',
+      quoteTitle:'Richiesta di preventivo — Personalizzazione REPX',
+      quoteColor:'Colore della maglietta:', quoteFabric:'Tessuto:', quoteTech:'Tecnica di stampa:', quoteQty:'Quantità totale:',
+      quoteBySize:'Per taglia:', quoteNotDefined:'non definito', quoteNoIllustration:'senza illustrazione',
+      quoteMaxArea:'area massima', quoteRealSize:'dimensione reale della stampa:', quoteRotation:'rotazione:',
+      quoteNeckTag:'Etichetta interna (collo):', quoteNoFileWaiting:'senza file, in attesa di specifica',
+      quoteAttachNote:'Nota: allega a questa email i mockup scaricati (pulsante "Genera Mockup") prima di inviare.',
+      quoteWarning:"AVVISO: i mockup generati da questo simulatore servono solo a validare il posizionamento e non hanno qualità di produzione. Dopo l'approvazione del preventivo, sarà necessario inviare l'illustrazione finale in alta risoluzione e/o formato vettoriale per procedere con la stampa.",
+      mockupWatermark:'REPX — MOCKUP SIMULATO · SENZA QUALITÀ DI PRODUZIONE'
+    }
+  };
 
   const state = {
     view: 'front',
@@ -389,15 +684,16 @@
     const wrap = document.getElementById('colorSwatches');
     const colors = FABRIC_COLORS[state.fabric];
     wrap.innerHTML = colors.map(c => {
-      const meta = COLOR_META[c];
+      const label = COLOR_LABELS[currentLang][c];
+      const hex = COLOR_HEX[c];
       const active = c === state.color ? 'active' : '';
-      return `<div class="swatch-col"><button class="swatch ${active}" data-color="${c}" style="background:${meta.hex}"></button><div class="swatch-label">${meta.label}</div></div>`;
+      return `<div class="swatch-col"><button class="swatch ${active}" data-color="${c}" style="background:${hex}"></button><div class="swatch-label">${label}</div></div>`;
     }).join('');
 
     const note = document.getElementById('colorFabricNote');
     if(state.fabric === 'algodao'){
       note.style.display = 'block';
-      note.textContent = 'O tecido Algodão não tem opção fluorescente.';
+      note.textContent = T('colorNoteAlgodao');
     } else {
       note.style.display = 'none';
     }
@@ -446,28 +742,29 @@
 
   function currentDesign(){ return state.designs[state.view]; }
 
-  function render(showGuide=true){
-    ctx.clearRect(0,0,1000,1000);
-    const garment = garmentImgs[state.view+'_'+state.color];
-    ctx.drawImage(garment, 0, 0, 1000, 1000);
+  function drawGarmentView(targetCtx, view, showGuide){
+    const design = state.designs[view];
+    const garment = garmentImgs[view+'_'+state.color];
+    targetCtx.clearRect(0,0,1000,1000);
+    targetCtx.drawImage(garment, 0, 0, 1000, 1000);
 
-    const area = getPrintArea(currentDesign().size);
+    const area = getPrintArea(design.size, view);
 
     if(showGuide){
-      ctx.save();
-      ctx.strokeStyle = 'rgba(194,50,31,0.65)';
-      ctx.setLineDash([7,5]);
-      ctx.lineWidth = 2;
-      ctx.strokeRect(area.x, area.y, area.w, area.h);
-      ctx.restore();
+      targetCtx.save();
+      targetCtx.strokeStyle = 'rgba(194,50,31,0.65)';
+      targetCtx.setLineDash([7,5]);
+      targetCtx.lineWidth = 2;
+      targetCtx.strokeRect(area.x, area.y, area.w, area.h);
+      targetCtx.restore();
 
-      ctx.font = "11px 'Space Mono', monospace";
-      ctx.fillStyle = 'rgba(0,0,0,0.55)';
-      ctx.textAlign = 'left';
-      ctx.fillText(currentDesign().size + '  ' + SIZES_MM[currentDesign().size].join('×') + 'mm', area.x, area.y - 8);
+      targetCtx.font = "11px 'Space Mono', monospace";
+      targetCtx.fillStyle = 'rgba(0,0,0,0.55)';
+      targetCtx.textAlign = 'left';
+      targetCtx.fillText(design.size + '  ' + SIZES_MM[design.size].join('×') + 'mm', area.x, area.y - 8);
     }
 
-    const design = currentDesign();
+    let drawnSize = null;
     if(design.img){
       const maxW = area.w * 0.94, maxH = area.h * 0.94;
       const baseRatio = Math.min(maxW/design.img.width, maxH/design.img.height);
@@ -479,42 +776,51 @@
       if(!design.pos){
         design.pos = { x: area.x + area.w/2, y: area.y + area.h/2 };
       }
-      // rotated axis-aligned bounding box, used to keep the artwork fully inside the print area
       const cos = Math.abs(Math.cos(angleRad)), sin = Math.abs(Math.sin(angleRad));
       const halfW = (dw*cos + dh*sin)/2;
       const halfH = (dw*sin + dh*cos)/2;
       design.pos.x = Math.min(Math.max(design.pos.x, area.x+halfW), area.x+area.w-halfW);
       design.pos.y = Math.min(Math.max(design.pos.y, area.y+halfH), area.y+area.h-halfH);
 
-      ctx.save();
-      ctx.translate(design.pos.x, design.pos.y);
-      ctx.rotate(angleRad);
-      ctx.drawImage(design.img, -dw/2, -dh/2, dw, dh);
-      ctx.restore();
+      targetCtx.save();
+      targetCtx.translate(design.pos.x, design.pos.y);
+      targetCtx.rotate(angleRad);
+      targetCtx.drawImage(design.img, -dw/2, -dh/2, dw, dh);
+      targetCtx.restore();
 
-      updateRealSizeBox(dw, dh);
-    } else {
-      updateRealSizeBox(null, null);
+      drawnSize = { dw, dh };
     }
 
     if(showGuide){
-      ctx.font = "10px 'Space Mono', monospace";
-      ctx.fillStyle = 'rgba(0,0,0,0.4)';
-      ctx.textAlign = 'right';
-      ctx.fillText('REPX — MAQUETE SIMULADA · SEM QUALIDADE DE PRODUÇÃO', 985, 985);
+      targetCtx.font = "10px 'Space Mono', monospace";
+      targetCtx.fillStyle = 'rgba(0,0,0,0.4)';
+      targetCtx.textAlign = 'right';
+      targetCtx.fillText('REPX — MAQUETE SIMULADA · SEM QUALIDADE DE PRODUÇÃO', 985, 985);
+      targetCtx.textAlign = 'left';
+    }
+
+    return drawnSize;
+  }
+
+  function render(showGuide=true){
+    const drawn = drawGarmentView(ctx, state.view, showGuide);
+    if(drawn){
+      updateRealSizeBox(drawn.dw, drawn.dh);
+    } else {
+      updateRealSizeBox(null, null);
     }
   }
 
   function updateRealSizeBox(dw, dh){
     const box = document.getElementById('realSizeBox');
     if(dw == null){
-      box.textContent = 'Tamanho real da estampagem: —';
+      box.textContent = T('realSizePrefix') + ' —';
       return;
     }
     const scale = getMMScale(state.view);
     const wCm = (dw / scale / 10).toFixed(1);
     const hCm = (dh / scale / 10).toFixed(1);
-    box.textContent = `Tamanho real da estampagem: ${wCm} × ${hCm} cm`;
+    box.textContent = `${T('realSizePrefix')} ${wCm} × ${hCm} cm`;
   }
 
   function computeRealSizeCm(design, view){
@@ -529,16 +835,16 @@
   }
 
   function updateSummary(){
-    document.getElementById('sumColor').textContent = COLOR_META[state.color].label;
-    document.getElementById('sumFabric').textContent = FABRIC_NAMES[state.fabric];
-    document.getElementById('sumTech').textContent = state.technique === 'dtf' ? 'DTF' : 'Serigrafia';
-    document.getElementById('sumQty').textContent = totalQuantity() + ' unidades';
+    document.getElementById('sumColor').textContent = COLOR_LABELS[currentLang][state.color];
+    document.getElementById('sumFabric').textContent = FABRIC_LABELS[currentLang][state.fabric];
+    document.getElementById('sumTech').textContent = state.technique === 'dtf' ? 'DTF' : T('techSeri').split(' (')[0];
+    document.getElementById('sumQty').textContent = totalQuantity() + ' ' + T('unitsWord');
 
     const sizesBreakdown = SIZE_LIST
       .filter(s => state.sizeQuantities[s] > 0)
       .map(s => s + ': ' + state.sizeQuantities[s])
       .join(', ');
-    document.getElementById('sumSizes').textContent = sizesBreakdown || 'Sem unidades definidas';
+    document.getElementById('sumSizes').textContent = sizesBreakdown || T('noSizesSet');
 
     ['front','back','sleeve'].forEach(v => {
       const d = state.designs[v];
@@ -547,15 +853,15 @@
         const real = computeRealSizeCm(d, v);
         label = d.fileName + ' — ' + real.w + '×' + real.h + ' cm';
       } else {
-        label = v === 'sleeve' ? 'Sem ilustração' : 'Sem ilustração — ' + d.size;
+        label = v === 'sleeve' ? T('noIllustration') : T('noIllustration') + ' — ' + d.size;
       }
       const elId = v==='front' ? 'sumFront' : (v==='back' ? 'sumBack' : 'sumSleeve');
       document.getElementById(elId).textContent = label;
     });
 
     document.getElementById('sumNeckTag').textContent = state.neckTag.enabled
-      ? ('Sim — ' + (state.neckTag.fileName || 'sem ficheiro') + ' (máx. 10cm)')
-      : 'Não';
+      ? (T('neckTagYesPrefix') + ' ' + (state.neckTag.fileName || T('noFile')) + ' ' + T('neckTagMax'))
+      : T('não');
   }
 
   // ---- controls ----
@@ -564,7 +870,7 @@
     document.querySelectorAll('#viewBtns .pill-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
     state.view = btn.dataset.view;
-    const labels = { front:'Frente', back:'Costas', sleeve:'Manga' };
+    const labels = { front:T('viewFront'), back:T('viewBack'), sleeve:T('viewSleeveShort') };
     const label = labels[state.view];
     document.getElementById('viewLabel1').textContent = label;
     document.getElementById('viewLabel2').textContent = label;
@@ -633,8 +939,8 @@
     const total = totalQuantity();
     const min = state.technique === 'serigrafia' ? 50 : 10;
     const note = document.getElementById('qtyNote');
-    const techLabel = state.technique === 'serigrafia' ? 'Serigrafia' : 'DTF';
-    note.textContent = `Total: ${total} unidades — mínimo ${min} unidades para ${techLabel}.`;
+    const techLabel = state.technique === 'serigrafia' ? T('techSeri').split(' (')[0] : 'DTF';
+    note.textContent = `${T('totalWord')} ${total} ${T('unitsWord')} — ${T('minWord')} ${min} ${T('minForWord')} ${techLabel}.`;
     note.style.color = total < min ? 'var(--red-bright)' : 'var(--dimmer)';
   }
 
@@ -757,45 +1063,186 @@
   canvas.addEventListener('pointercancel', ()=>{ dragging=false; });
 
   // ---- generate mockup (clean export) ----
+  function generateFullMockup(){
+    const viewLabels = { front: T('sumFrontLabel').toUpperCase(), back: T('sumBackLabel').toUpperCase(), sleeve: T('sumSleeveLabel').toUpperCase() };
+    const thumbSize = 620;
+    const gap = 40;
+    const margin = 60;
+    const width = margin*2 + thumbSize*3 + gap*2;
+
+    // 1. render each view cleanly (no guides) onto its own offscreen canvas
+    const thumbCanvases = {};
+    ['front','back','sleeve'].forEach(v => {
+      const off = document.createElement('canvas');
+      off.width = 1000; off.height = 1000;
+      const offCtx = off.getContext('2d');
+      drawGarmentView(offCtx, v, false);
+      thumbCanvases[v] = off;
+    });
+
+    // 2. build the summary lines (mirrors the on-page order summary)
+    const summaryLines = [
+      [T('sumColorLabel'), COLOR_LABELS[currentLang][state.color]],
+      [T('sumFabricLabel'), FABRIC_LABELS[currentLang][state.fabric]]
+    ];
+    ['front','back','sleeve'].forEach(v => {
+      const d = state.designs[v];
+      const label = viewLabels[v].charAt(0) + viewLabels[v].slice(1).toLowerCase();
+      let value;
+      if(d.img){
+        const real = computeRealSizeCm(d, v);
+        value = d.fileName + ' — ' + real.w + '×' + real.h + ' cm';
+      } else {
+        value = v === 'sleeve' ? T('noIllustration') : T('noIllustration') + ' — ' + d.size;
+      }
+      summaryLines.push([label, value]);
+    });
+    summaryLines.push([T('sumNeckTagLabel'), state.neckTag.enabled ? (T('neckTagYesPrefix') + ' ' + (state.neckTag.fileName || T('noFile')) + ' ' + T('neckTagMax')) : T('não')]);
+    summaryLines.push([T('sumTechLabel'), state.technique === 'dtf' ? 'DTF' : T('techSeri').split(' (')[0]]);
+    summaryLines.push([T('sumQtyLabel'), totalQuantity() + ' ' + T('unitsWord')]);
+    const sizesLine = SIZE_LIST.filter(s => state.sizeQuantities[s] > 0).map(s => s + ': ' + state.sizeQuantities[s]).join('   ');
+    summaryLines.push([T('sumSizesLabel'), sizesLine || T('noSizesSet')]);
+
+    const rowH = 34;
+    const summaryTop = margin + thumbSize + 70;
+    const summaryHeight = 70 + summaryLines.length * rowH + 40;
+    const height = summaryTop + summaryHeight + margin;
+
+    // 3. compose the final canvas — white background, black text
+    const final = document.createElement('canvas');
+    final.width = width; final.height = height;
+    const fctx = final.getContext('2d');
+    fctx.fillStyle = '#ffffff';
+    fctx.fillRect(0,0,width,height);
+
+    ['front','back','sleeve'].forEach((v,i) => {
+      const x = margin + i*(thumbSize+gap);
+      fctx.strokeStyle = '#dddddd';
+      fctx.lineWidth = 1;
+      fctx.strokeRect(x, margin, thumbSize, thumbSize);
+      fctx.drawImage(thumbCanvases[v], x, margin, thumbSize, thumbSize);
+      fctx.fillStyle = '#000000';
+      fctx.font = "bold 20px 'Inter', sans-serif";
+      fctx.textAlign = 'center';
+      fctx.fillText(viewLabels[v], x + thumbSize/2, margin + thumbSize + 34);
+    });
+    fctx.textAlign = 'left';
+
+    // summary header
+    fctx.fillStyle = '#000000';
+    fctx.font = "bold 26px 'Inter', sans-serif";
+    fctx.fillText(T('summaryTitle').toUpperCase(), margin, summaryTop);
+    fctx.strokeStyle = '#000000';
+    fctx.lineWidth = 2;
+    fctx.beginPath();
+    fctx.moveTo(margin, summaryTop + 16);
+    fctx.lineTo(width - margin, summaryTop + 16);
+    fctx.stroke();
+
+    let ty = summaryTop + 16 + 44;
+    summaryLines.forEach(([label, value]) => {
+      fctx.fillStyle = '#555555';
+      fctx.font = "15px 'Inter', sans-serif";
+      fctx.fillText(label.toUpperCase(), margin, ty);
+      fctx.fillStyle = '#000000';
+      fctx.font = "bold 16px 'Inter', sans-serif";
+      fctx.fillText(String(value), margin + 260, ty);
+      fctx.strokeStyle = '#eeeeee';
+      fctx.lineWidth = 1;
+      fctx.beginPath();
+      fctx.moveTo(margin, ty + 12);
+      fctx.lineTo(width - margin, ty + 12);
+      fctx.stroke();
+      ty += rowH;
+    });
+
+    // footer note
+    fctx.fillStyle = '#999999';
+    fctx.font = "12px 'Space Mono', monospace";
+    fctx.fillText(T('mockupWatermark'), margin, height - margin + 24);
+
+    return final;
+  }
+
   document.getElementById('generateBtn').addEventListener('click', ()=>{
-    render(false); // clean, no guides
+    const finalCanvas = generateFullMockup();
     const link = document.createElement('a');
-    link.download = `repx-maquete-${state.view}-${state.color}.png`;
-    link.href = canvas.toDataURL('image/png');
+    link.download = `repx-maquete-${state.color}.png`;
+    link.href = finalCanvas.toDataURL('image/png');
     link.click();
-    render(true); // restore guides for continued editing
+    render(true);
   });
 
   // ---- request quote ----
   document.getElementById('quoteBtn').addEventListener('click', ()=>{
-    const techNames = {dtf:'DTF', serigrafia:'Serigrafia'};
+    const techNames = {dtf:'DTF', serigrafia: T('techSeri').split(' (')[0]};
 
-    let body = `Pedido de orçamento — Personalização REPX\n\n`;
-    body += `Cor da t-shirt: ${COLOR_META[state.color].label}\n`;
-    body += `Tecido: ${FABRIC_NAMES[state.fabric]}\n`;
-    body += `Técnica de impressão: ${techNames[state.technique]}\n`;
-    body += `Quantidade total: ${totalQuantity()} unidades\n`;
+    let body = `${T('quoteTitle')}\n\n`;
+    body += `${T('quoteColor')} ${COLOR_LABELS[currentLang][state.color]}\n`;
+    body += `${T('quoteFabric')} ${FABRIC_LABELS[currentLang][state.fabric]}\n`;
+    body += `${T('quoteTech')} ${techNames[state.technique]}\n`;
+    body += `${T('quoteQty')} ${totalQuantity()} ${T('unitsWord')}\n`;
     const sizesLine = SIZE_LIST.filter(s => state.sizeQuantities[s] > 0)
       .map(s => s + ': ' + state.sizeQuantities[s]).join(', ');
-    body += `Por tamanho: ${sizesLine || 'não definido'}\n\n`;
+    body += `${T('quoteBySize')} ${sizesLine || T('quoteNotDefined')}\n\n`;
     ['front','back','sleeve'].forEach(v=>{
       const d = state.designs[v];
-      const labels = { front:'Frente', back:'Costas', sleeve:'Manga' };
+      const labels = { front:T('sumFrontLabel'), back:T('sumBackLabel'), sleeve:T('sumSleeveLabel') };
       const label = labels[v];
       if(d.img){
         const real = computeRealSizeCm(d, v);
-        const areaLabel = v==='sleeve' ? 'máx. 10x10cm' : `área máxima ${d.size} (${SIZES_MM[d.size].join('x')}mm)`;
-        body += `${label}: ${d.fileName} — ${areaLabel} — tamanho real da estampagem: ${real.w} x ${real.h} cm — rotação: ${d.rotation||0}°\n`;
+        const areaLabel = v==='sleeve' ? 'máx. 10x10cm' : `${T('quoteMaxArea')} ${d.size} (${SIZES_MM[d.size].join('x')}mm)`;
+        body += `${label}: ${d.fileName} — ${areaLabel} — ${T('quoteRealSize')} ${real.w} x ${real.h} cm — ${T('quoteRotation')} ${d.rotation||0}°\n`;
       } else {
-        body += `${label}: sem ilustração\n`;
+        body += `${label}: ${T('quoteNoIllustration')}\n`;
       }
     });
-    body += `Etiqueta interior (pescoço): ${state.neckTag.enabled ? 'Sim — ' + (state.neckTag.fileName || 'sem ficheiro, aguarda especificação') + ' (máx. 10x10cm)' : 'Não'}\n`;
-    body += `\nNota: por favor anexa a este email as maquetes descarregadas (botão "Gerar Maquete") antes de enviar.\n`;
-    body += `\nAVISO: as maquetes geradas por este simulador servem apenas para validar o posicionamento e não têm qualidade de produção. Após aprovação do orçamento, será necessário enviar a(s) ilustração(ões) final(is) em alta resolução e/ou em formato vetorial para avançarmos com a impressão.`;
+    body += `${T('quoteNeckTag')} ${state.neckTag.enabled ? T('neckTagYesPrefix') + ' ' + (state.neckTag.fileName || T('quoteNoFileWaiting')) + ' (máx. 10x10cm)' : T('não')}\n`;
+    body += `\n${T('quoteAttachNote')}\n`;
+    body += `\n${T('quoteWarning')}`;
 
-    const subject = encodeURIComponent('Pedido de Orçamento — Personalização REPX');
+    const subject = encodeURIComponent(T('quoteSubject'));
     window.location.href = `mailto:rscglobaldist@gmail.com?subject=${subject}&body=${encodeURIComponent(body)}`;
+  });
+
+  function applyLang(lang){
+    currentLang = lang;
+    document.documentElement.setAttribute('lang', lang);
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if(TRANSLATIONS[lang][key] !== undefined){
+        el.textContent = TRANSLATIONS[lang][key];
+      }
+    });
+
+    document.getElementById('langBtnLabel').textContent = lang.toUpperCase();
+    document.querySelectorAll('.lang-option').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+    // refresh dynamic pieces that depend on translated strings
+    const labels = { front:T('viewFront'), back:T('viewBack'), sleeve:T('viewSleeveShort') };
+    const currentLabel = labels[state.view];
+    document.getElementById('viewLabel1').textContent = currentLabel;
+    document.getElementById('viewLabel2').textContent = currentLabel;
+
+    renderColorSwatches();
+    updateQtyNote();
+    render();
+    updateSummary();
+  }
+
+  document.getElementById('langBtn').addEventListener('click', e=>{
+    e.stopPropagation();
+    document.getElementById('langMenu').classList.toggle('open');
+  });
+  document.addEventListener('click', ()=> document.getElementById('langMenu').classList.remove('open'));
+  document.getElementById('langMenu').addEventListener('click', e=>{
+    const btn = e.target.closest('.lang-option'); if(!btn) return;
+    e.stopPropagation();
+    applyLang(btn.dataset.lang);
+    document.getElementById('langMenu').classList.remove('open');
   });
 
   // ---- init ----
