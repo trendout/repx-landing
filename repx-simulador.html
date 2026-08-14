@@ -1,9 +1,91 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-14YWXK8R39"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-14YWXK8R39');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>REPX | Simulador de Personalização</title>
+<meta name="description" content="Simulador de personalização REPX — simula a estampagem em t-shirts, hoodies e sweatshirts: escolhe peça, tecido, cor e posição do print antes de aprovares o orçamento.">
+<meta name="keywords" content="simulador de personalização, simulador de estampagem, mockup t-shirt, mockup hoodie, personalização vestuário desportivo, print vestuário, REPX simulador, fabrico B2B, private label vestuário, custom apparel mockup, simulador de impressão, personalización ropa deportiva, simulateur impression vêtement, Bekleidung Personalisierung Simulator, simulatore personalizzazione abbigliamento, RSC Distribution">
+<meta name="author" content="REPX / RSC Distribution">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAABgUlEQVR4nJVSq47CUBCd6b2FEgxpIKBaHIQEhapHIfEYBAiCqMRj+Agcv4HuB/AIKQI0AnIrSErvdFZ0l7CPbHaPm8yZM2cmB+CfQAAQQvyRTUT/XQAohOh2u8VikZmZOU3TrwxEwzAQMUmS9XoNlmVdLhf+G+r1ugQApZRt28y83++DIMjn8/gBrXWr1ep0OogYRVGapmBZVhiGSZJorZfL5XfT4/E4k1dKOY4jAaBcLkspAWA4HPb7/fP5HIbhbrc7HA7b7bZWq306SUo5Go08z2s2m5VKxXXdLxvu93uhUMgstdvtT73JZBLHcRzHj8eDmTebzfV6zV73tASImMvlAMD3fSLSWhMRM/u+j4i2bS8Wi9cb3rXn8zkzZ8JJkgwGAwAwTRMAptMpERHR7XZzHAdKpdJqtXp+WinV6/UAQEppmiYizmazrKW1dl0Xq9Wq53lRFCGiEOJ0Oh2PRyEEESEiM7uu22g0soEgCH5Ii2EYv2Upi8qz/h6nVwIRvQHytAow+E6txQAAAABJRU5ErkJggg==">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAACzElEQVR4nO1Vu0ozQRQ+Mzsb120ESSGxMZCsEK0sfAELLcRW8BkU+5QW+gJaCD6AXcTSxtLaZnUxqKhLAimWeAvr7Mz5ixPHZRNXQasfTxMm+S7nNhmAv/jvg9GHZVm/Lq2U+nXNIdGvYHt7e3JyUmvNGPuhIiIyxhCxXq+3Wq3+t/f39/jbUavVAECQQRRFExMTWmvOeToXRPxO1hkWY0xrnSTJh4FlWUKIjMFPWmS6LXKgGxsbQRBwzrXWQwHUayHEwcFBqVQi6Qwmz+D4+Pju7u47WT8/P5vcMz/lNWRpaalcLruum+Vwbtv2yMiI4ziFQmF0dDTnGvUr0FoPznN/f//19TUMw+vra9/3fd+/vLy8ublpt9tSyjQyZxf6Bq7r0mSUUlQpFeu6brVarVari4uLhHx6egrDsNlsGsswDL++PUdHR1EUDV1npVSSJFLKJEmo0ExEURTHsTkSRik1PT0N5iZzzovF4tTUlOd5s7OzMzMznueNj4+PjY3Ztp3pBiImSYKInHMhRCZ9s6a1Wi0IgryyVlZWut2u1jqdeOZIZhlAuoKPYIzRdXMcBwAWFhZarZYhpMmI2Gg0Tk5Obm9v0835wqA/dCEAYHV1tdfrZdSVUnTc3Nw0q1GpVJaXl9vttgF/UQEArK+vG8W0OiLGcby2tgYAtm2n/1SCIDCY4QaMMSJsbW2lk02PtNvt0rKasXPOOeeO4zSbzTwDkmaM7e3tIaKUMq0upUTEh4eH+fl500OTFvldXV19amBAh4eHiNjr9d7e3uR70Ax93/c8L6Oe5l5cXBBYSkn0OI6JApzzSqVyfn6On8TZ2VmpVIJh7zYZFAqFTqczSOw/OFrrubm509PTRqMxmODLy8vu7u7j46NlWYOPOCICgFJqZ2enWCwqpciSLlqn0xnc0uHxk4eawfsyfIag0eWrWJY1mMR3iH8BAP8AkgkhQYzdzXUAAAAASUVORK5CYII=">
+<link rel="icon" type="image/png" sizes="48x48" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAAEQElEQVR4nO2XPUsrQRSGd2YnHwZRgoX51GCIioKCsmAQhYC2goLYRLERIb21pYWF5B+ksTSSH2BhY5PGQlkxYqKEYAgWhhDd7O7MLc51E2N23eR6tclb7cec2Wfec2Z2huO66qqrrn5XqH6FkEG7/y3G2C9+3Uh1VxwOByHk50kZYwih19dXRVH+AiGEGGPJZFIQBEVReJ7/eaCVlZXLy0ue54n2wufz+Xy+n0RplM1mg4s6UK1Wo5SqqvorDlFKm4EQQhhjxhjGuGWkFtOBEEJ6sxiAtFvSslFL6YF+r8wCVavVx8fHzpgURenv7/d6vd8DBFWVTqeXlpYwxu0mjhAiy3I0Gk0kEmYKtI2UUUoZY6qqtgUEIbDGmJFZIFmWNW8QQtpA2bv0AsFU8/+lr2sC+hoeHl5bW5uennY6nYwx5V2qqgIoxpjneYwxtGcfZZKGM+MQFHIoFDo5OVEUpVQq5XK5TCYjiqIoiplMJp/Pl8vlplRijCGQ5/m2HDKbMsYYpZQQ4na73W53OByG57VarVgsZrPZ29tbURRvbm7u7+/z+XylUgHnoHrMV14dCBIBkehd2luoGzAfqhseWq1Wv9/v9/sXFxc1xEKhkM1mwcK7u7vr62uHw9E2kM1mI4QQUn9CKYVRogZxHNc0dcE8WHABMRAIBAKBSCQCDcrlsiRJnwO/AIrFYoIgjI6OTkxMjIyMuN1uh8NhZiVsnHTcx3IGxL6+vi87+QAE/qfT6XQ6DU/tdrvH4wmFQuPj45OTk2NjY8FgcGBgAGNMCDGm/Pzb0vJrHovj3udty+8hhOx2+8LCQj6fhzwyfSmKIsuytiIYtARBG0EQOI77sB9q/Cc0Fg3P85IkDQ4OHhwceL3epp/zZydaVtjn53pqPe211cxisUiSNDU1lUqlAoEApVQvXxCCMY7H46VSaWZmJhgMDg0NOZ3Ob9tgWSwWjuMikUixWIRc6NmuqipcxGIxLRxj7HK55ufnNzc3k8lkYzODlOnSwPxfX1+vVCrGNPCqWq1ubGzAMAghTV2vrq7qdfI1EEIIaHZ3d2FMX9I8Pz8vLy8DTdNyarVaCSFbW1sdAsFGluO4/f199r5269HUajXG2MPDw+zsLMdxVqtVz+loNNoJkFaw8XicMQZbDj0aWZYZY1dXV6FQSPvwdwLBTU9Pz/HxMYzewBtJkhhj5+fnLpdLN/f/AgRXTqfz7OxM+56eIFOpVKq3t9eYpgMgAplSVdXr9Z6engqC8Pb2ZrFY9DYMjDGLxZJIJHZ2dhRFgVgDIC1KVdWWLRljcHT+4E04HH56ejJwpVGHh4dcQ/kbCxza3t427nNubu6vQ5RSj8ezt7eXy+VEUTTwn1LK83wymTw6OoIjpZkTCAy9UChcXFzIstxyDAihl5cXrbHuBNGTtnH+H6r3a/4Q2MGZGgZgMIx/Oad31VVXbekPVCx2read5RIAAAAASUVORK5CYII=">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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">
+<link rel="canonical" href="https://repx.pt/repx-simulador.html">
+
+<!-- hreflang: same single-page URL, annotated per target market/language -->
+<link rel="alternate" hreflang="pt-PT" href="https://repx.pt/repx-simulador.html">
+<link rel="alternate" hreflang="en-GB" href="https://repx.pt/repx-simulador.html">
+<link rel="alternate" hreflang="es-ES" href="https://repx.pt/repx-simulador.html">
+<link rel="alternate" hreflang="fr-FR" href="https://repx.pt/repx-simulador.html">
+<link rel="alternate" hreflang="de-DE" href="https://repx.pt/repx-simulador.html">
+<link rel="alternate" hreflang="it-IT" href="https://repx.pt/repx-simulador.html">
+<link rel="alternate" hreflang="x-default" href="https://repx.pt/repx-simulador.html">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://repx.pt/repx-simulador.html">
+<meta property="og:title" content="REPX | Simulador de Personalização">
+<meta property="og:description" content="Simula a tua estampagem em t-shirts, hoodies e sweatshirts REPX — peça, tecido, cor e posição do print antes de aprovares o orçamento.">
+<meta property="og:image" content="https://repx.pt/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="REPX — Simulador de Personalização">
+<meta property="og:site_name" content="REPX">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="it_IT">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="REPX | Simulador de Personalização">
+<meta name="twitter:description" content="Simula a tua estampagem em t-shirts, hoodies e sweatshirts REPX antes de aprovares o orçamento.">
+<meta name="twitter:image" content="https://repx.pt/og-image.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "REPX — Simulador de Personalização",
+  "url": "https://repx.pt/repx-simulador.html",
+  "description": "Simulador visual de personalização de vestuário REPX — simula posição de estampagem em t-shirts, hoodies e sweatshirts antes da aprovação do orçamento de fabrico B2B.",
+  "applicationCategory": "DesignApplication",
+  "operatingSystem": "Any",
+  "isAccessibleForFree": true,
+  "inLanguage": ["pt-PT", "en-GB", "es-ES", "fr-FR", "de-DE", "it-IT"],
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "brand": {
+    "@type": "Brand",
+    "name": "REPX",
+    "slogan": "The Repetition Mindset"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "REPX",
+    "url": "https://repx.pt/"
+  },
+  "parentOrganization": {
+    "@type": "Organization",
+    "name": "RSC Distribution"
+  }
+}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
