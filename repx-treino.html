@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-14YWXK8R39"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-14YWXK8R39');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REPX | Gerador de Treino</title>
+<meta name="theme-color" content="#0a0a0b">
+<meta name="description" content="Gerador de planos de treino REPX — CrossFit, Hyrox e Calistenia, por nível: Scaled, RX e RX+.">
+<meta name="keywords" content="gerador de treino, gerador de treino crossfit, gerador de treino hyrox, gerador de treino calistenia, WOD generator, treino scaled rx rx+, planos de treino grátis, sets e reps, treino online grátis, REPX, cross training, workout generator, generador de entrenamiento, générateur d'entraînement, Trainingsgenerator, generatore di allenamento, RSC Distribution">
+<meta name="author" content="REPX / RSC Distribution">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAABgUlEQVR4nJVSq47CUBCd6b2FEgxpIKBaHIQEhapHIfEYBAiCqMRj+Agcv4HuB/AIKQI0AnIrSErvdFZ0l7CPbHaPm8yZM2cmB+CfQAAQQvyRTUT/XQAohOh2u8VikZmZOU3TrwxEwzAQMUmS9XoNlmVdLhf+G+r1ugQApZRt28y83++DIMjn8/gBrXWr1ep0OogYRVGapmBZVhiGSZJorZfL5XfT4/E4k1dKOY4jAaBcLkspAWA4HPb7/fP5HIbhbrc7HA7b7bZWq306SUo5Go08z2s2m5VKxXXdLxvu93uhUMgstdvtT73JZBLHcRzHj8eDmTebzfV6zV73tASImMvlAMD3fSLSWhMRM/u+j4i2bS8Wi9cb3rXn8zkzZ8JJkgwGAwAwTRMAptMpERHR7XZzHAdKpdJqtXp+WinV6/UAQEppmiYizmazrKW1dl0Xq9Wq53lRFCGiEOJ0Oh2PRyEEESEiM7uu22g0soEgCH5Ii2EYv2Upi8qz/h6nVwIRvQHytAow+E6txQAAAABJRU5ErkJggg==">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAACzElEQVR4nO1Vu0ozQRQ+Mzsb120ESSGxMZCsEK0sfAELLcRW8BkU+5QW+gJaCD6AXcTSxtLaZnUxqKhLAimWeAvr7Mz5ixPHZRNXQasfTxMm+S7nNhmAv/jvg9GHZVm/Lq2U+nXNIdGvYHt7e3JyUmvNGPuhIiIyxhCxXq+3Wq3+t/f39/jbUavVAECQQRRFExMTWmvOeToXRPxO1hkWY0xrnSTJh4FlWUKIjMFPWmS6LXKgGxsbQRBwzrXWQwHUayHEwcFBqVQi6Qwmz+D4+Pju7u47WT8/P5vcMz/lNWRpaalcLruum+Vwbtv2yMiI4ziFQmF0dDTnGvUr0FoPznN/f//19TUMw+vra9/3fd+/vLy8ublpt9tSyjQyZxf6Bq7r0mSUUlQpFeu6brVarVari4uLhHx6egrDsNlsGsswDL++PUdHR1EUDV1npVSSJFLKJEmo0ExEURTHsTkSRik1PT0N5iZzzovF4tTUlOd5s7OzMzMznueNj4+PjY3Ztp3pBiImSYKInHMhRCZ9s6a1Wi0IgryyVlZWut2u1jqdeOZIZhlAuoKPYIzRdXMcBwAWFhZarZYhpMmI2Gg0Tk5Obm9v0835wqA/dCEAYHV1tdfrZdSVUnTc3Nw0q1GpVJaXl9vttgF/UQEArK+vG8W0OiLGcby2tgYAtm2n/1SCIDCY4QaMMSJsbW2lk02PtNvt0rKasXPOOeeO4zSbzTwDkmaM7e3tIaKUMq0upUTEh4eH+fl500OTFvldXV19amBAh4eHiNjr9d7e3uR70Ax93/c8L6Oe5l5cXBBYSkn0OI6JApzzSqVyfn6On8TZ2VmpVIJh7zYZFAqFTqczSOw/OFrrubm509PTRqMxmODLy8vu7u7j46NlWYOPOCICgFJqZ2enWCwqpciSLlqn0xnc0uHxk4eawfsyfIag0eWrWJY1mMR3iH8BAP8AkgkhQYzdzXUAAAAASUVORK5CYII=">
+<link rel="icon" type="image/png" sizes="48x48" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAAEQElEQVR4nO2XPUsrQRSGd2YnHwZRgoX51GCIioKCsmAQhYC2goLYRLERIb21pYWF5B+ksTSSH2BhY5PGQlkxYqKEYAgWhhDd7O7MLc51E2N23eR6tclb7cec2Wfec2Z2huO66qqrrn5XqH6FkEG7/y3G2C9+3Uh1VxwOByHk50kZYwih19dXRVH+AiGEGGPJZFIQBEVReJ7/eaCVlZXLy0ue54n2wufz+Xy+n0RplM1mg4s6UK1Wo5SqqvorDlFKm4EQQhhjxhjGuGWkFtOBEEJ6sxiAtFvSslFL6YF+r8wCVavVx8fHzpgURenv7/d6vd8DBFWVTqeXlpYwxu0mjhAiy3I0Gk0kEmYKtI2UUUoZY6qqtgUEIbDGmJFZIFmWNW8QQtpA2bv0AsFU8/+lr2sC+hoeHl5bW5uennY6nYwx5V2qqgIoxpjneYwxtGcfZZKGM+MQFHIoFDo5OVEUpVQq5XK5TCYjiqIoiplMJp/Pl8vlplRijCGQ5/m2HDKbMsYYpZQQ4na73W53OByG57VarVgsZrPZ29tbURRvbm7u7+/z+XylUgHnoHrMV14dCBIBkehd2luoGzAfqhseWq1Wv9/v9/sXFxc1xEKhkM1mwcK7u7vr62uHw9E2kM1mI4QQUn9CKYVRogZxHNc0dcE8WHABMRAIBAKBSCQCDcrlsiRJnwO/AIrFYoIgjI6OTkxMjIyMuN1uh8NhZiVsnHTcx3IGxL6+vi87+QAE/qfT6XQ6DU/tdrvH4wmFQuPj45OTk2NjY8FgcGBgAGNMCDGm/Pzb0vJrHovj3udty+8hhOx2+8LCQj6fhzwyfSmKIsuytiIYtARBG0EQOI77sB9q/Cc0Fg3P85IkDQ4OHhwceL3epp/zZydaVtjn53pqPe211cxisUiSNDU1lUqlAoEApVQvXxCCMY7H46VSaWZmJhgMDg0NOZ3Ob9tgWSwWjuMikUixWIRc6NmuqipcxGIxLRxj7HK55ufnNzc3k8lkYzODlOnSwPxfX1+vVCrGNPCqWq1ubGzAMAghTV2vrq7qdfI1EEIIaHZ3d2FMX9I8Pz8vLy8DTdNyarVaCSFbW1sdAsFGluO4/f199r5269HUajXG2MPDw+zsLMdxVqtVz+loNNoJkFaw8XicMQZbDj0aWZYZY1dXV6FQSPvwdwLBTU9Pz/HxMYzewBtJkhhj5+fnLpdLN/f/AgRXTqfz7OxM+56eIFOpVKq3t9eYpgMgAplSVdXr9Z6engqC8Pb2ZrFY9DYMjDGLxZJIJHZ2dhRFgVgDIC1KVdWWLRljcHT+4E04HH56ejJwpVGHh4dcQ/kbCxza3t427nNubu6vQ5RSj8ezt7eXy+VEUTTwn1LK83wymTw6OoIjpZkTCAy9UChcXFzIstxyDAihl5cXrbHuBNGTtnH+H6r3a/4Q2MGZGgZgMIx/Oad31VVXbekPVCx2read5RIAAAAASUVORK5CYII=">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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">
+<link rel="canonical" href="https://repx.pt/repx-treino.html">
+
+<!-- hreflang: same single-page URL, annotated per target market/language -->
+<link rel="alternate" hreflang="pt-PT" href="https://repx.pt/repx-treino.html">
+<link rel="alternate" hreflang="en-GB" href="https://repx.pt/repx-treino.html">
+<link rel="alternate" hreflang="es-ES" href="https://repx.pt/repx-treino.html">
+<link rel="alternate" hreflang="fr-FR" href="https://repx.pt/repx-treino.html">
+<link rel="alternate" hreflang="de-DE" href="https://repx.pt/repx-treino.html">
+<link rel="alternate" hreflang="it-IT" href="https://repx.pt/repx-treino.html">
+<link rel="alternate" hreflang="x-default" href="https://repx.pt/repx-treino.html">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://repx.pt/repx-treino.html">
+<meta property="og:title" content="REPX | Gerador de Treino — CrossFit, Hyrox & Calistenia">
+<meta property="og:description" content="Gerador gratuito de planos de treino REPX — CrossFit, Hyrox e Calistenia, por nível: Scaled, RX e RX+. Sets e reps prontos a treinar.">
+<meta property="og:image" content="https://repx.pt/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="REPX — Gerador de Treino">
+<meta property="og:site_name" content="REPX">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="it_IT">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="REPX | Gerador de Treino">
+<meta name="twitter:description" content="Gerador gratuito de planos de treino REPX — CrossFit, Hyrox e Calistenia, por nível: Scaled, RX e RX+.">
+<meta name="twitter:image" content="https://repx.pt/og-image.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "REPX — Gerador de Treino",
+  "url": "https://repx.pt/repx-treino.html",
+  "description": "Gerador gratuito de planos de treino para CrossFit, Hyrox e Calistenia, com seleção de nível (Scaled, RX, RX+) e sets/reps gerados automaticamente.",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Any",
+  "isAccessibleForFree": true,
+  "inLanguage": ["pt-PT", "en-GB", "es-ES", "fr-FR", "de-DE", "it-IT"],
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "brand": {
+    "@type": "Brand",
+    "name": "REPX",
+    "slogan": "The Repetition Mindset"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "REPX",
+    "url": "https://repx.pt/"
+  },
+  "parentOrganization": {
+    "@type": "Organization",
+    "name": "RSC Distribution"
+  }
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0a0a0b; --black2:#131315; --black3:#1b1b1e;
+    --line:rgba(255,255,255,0.09); --line-bright:rgba(255,255,255,0.24);
+    --ink:#F2F1EE; --dim:#97969b; --dimmer:#5c5b60;
+    --red:#9E1B1B; --red-bright:#C2321F;
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0; background:var(--black); color:var(--ink);
+    font-family:'Inter',sans-serif; min-height:100vh;
+  }
+  .wrap{ max-width:1200px; margin:0 auto; padding:0 24px; }
+  a{ color:inherit; }
+
+  header{ border-bottom:1px solid var(--line); padding:20px 0; }
+  header .wrap{ display:flex; align-items:center; justify-content:space-between; }
+  .header-right{ display:flex; align-items:center; gap:16px; }
+  .logo{ font-family:'Black Ops One',sans-serif; font-size:20px; }
+  .header-sub{ font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.08em; color:var(--dim); text-transform:uppercase; }
+  .lang-switch{ position:relative; }
+  .lang-btn{
+    font-family:'Space Mono',monospace; font-size:12px; color:var(--dim);
+    background:transparent; border:1px solid var(--line-bright); border-radius:999px;
+    padding:7px 12px; cursor:pointer; display:flex; align-items:center; gap:6px;
+    transition:color .2s ease, border-color .2s ease;
+  }
+  .lang-btn:hover{ color:var(--ink); border-color:var(--red-bright); }
+  .lang-btn .caret{ font-size:9px; transform:translateY(1px); }
+  .lang-menu{
+    position:absolute; top:calc(100% + 8px); right:0;
+    background:var(--black2); border:1px solid var(--line-bright); border-radius:10px;
+    padding:6px; display:none; flex-direction:column; min-width:130px; z-index:60;
+    box-shadow:0 12px 30px rgba(0,0,0,0.4);
+  }
+  .lang-menu.open{ display:flex; }
+  .lang-option{
+    font-family:'Space Mono',monospace; font-size:12.5px; color:var(--dim);
+    background:none; border:none; text-align:left; padding:9px 10px; border-radius:6px;
+    cursor:pointer; transition:background .2s ease, color .2s ease;
+  }
+  .lang-option:hover{ background:rgba(255,255,255,0.06); color:var(--ink); }
+  .lang-option.active{ color:var(--ink); background:rgba(194,50,31,0.15); }
+  @media (max-width:600px){ .header-sub{ display:none; } }
+
+  .hero-title{ padding:36px 0 8px; }
+  .hero-title h1{
+    font-family:'Oswald',sans-serif; font-weight:700; text-transform:uppercase;
+    font-size:clamp(24px,4vw,34px); margin:0 0 8px;
+  }
+  .hero-title p{ color:var(--dim); font-size:14px; margin:0; max-width:560px; line-height:1.6; }
+
+  .app{
+    display:grid; grid-template-columns:340px 1fr; gap:28px;
+    padding:28px 0 60px; align-items:start;
+  }
+  @media (max-width:900px){ .app{ grid-template-columns:1fr; } }
+  @media (max-width:600px){
+    .wrap{ padding:0 16px; }
+    .app{ padding:20px 0 40px; gap:20px; }
+    .panel{ padding:18px; gap:16px; }
+    .hero-title{ padding:24px 0 4px; }
+    footer .wrap{ flex-direction:column; gap:6px; text-align:center; }
+    .ex-row{ flex-direction:column; gap:3px; }
+    .ex-name{ flex-basis:auto; min-width:0; }
+    .ex-detail{ text-align:left; flex-basis:auto; }
+    .summary h3{ flex-wrap:wrap; gap:4px 10px; }
+  }
+
+  .panel{
+    background:var(--black2); border:1px solid var(--line); border-radius:14px;
+    padding:22px; display:flex; flex-direction:column; gap:20px;
+  }
+  .group-label{
+    font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--dim); margin-bottom:9px;
+  }
+  .btn-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .pill-btn{
+    font-family:'Space Mono',monospace; font-size:11.5px; letter-spacing:.03em;
+    padding:9px 14px; border-radius:999px; border:1px solid var(--line-bright);
+    background:transparent; color:var(--dim); cursor:pointer; transition:all .2s ease;
+  }
+  .pill-btn:hover{ color:var(--ink); }
+  .pill-btn.active{ background:var(--red); border-color:var(--red); color:#fff; }
+  .level-hint{ font-family:'Space Mono',monospace; font-size:11px; color:var(--dimmer); margin-top:8px; }
+
+  .btn{
+    font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.05em; text-transform:uppercase;
+    padding:13px 18px; border-radius:6px; text-align:center; cursor:pointer; border:none; width:100%;
+    transition:all .2s ease; display:flex; align-items:center; justify-content:center; gap:8px;
+  }
+  .btn-primary{ background:var(--red); color:#fff; }
+  .btn-primary:hover{ background:var(--red-bright); }
+
+  .canvas-col{ display:flex; flex-direction:column; align-items:center; gap:16px; }
+  .empty{
+    width:100%; max-width:560px; border:1px dashed var(--line-bright); border-radius:14px;
+    padding:32px 20px; text-align:center; color:var(--dim); font-size:13.5px; background:var(--black2);
+  }
+
+  .summary{
+    background:var(--black2); border:1px solid var(--line); border-radius:14px;
+    padding:20px; width:100%; max-width:560px; animation:cardIn .4s ease-out;
+  }
+  @keyframes cardIn{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:translateY(0); } }
+  .card-meta{
+    display:flex; justify-content:space-between; font-family:'Space Mono',monospace;
+    font-size:11px; color:var(--dimmer); margin-bottom:10px;
+  }
+  .summary h3{
+    font-family:'Oswald',sans-serif; font-size:17px; text-transform:uppercase; margin:0 0 16px;
+    display:flex; justify-content:space-between; align-items:baseline; font-weight:600;
+  }
+  .card-duration{ font-family:'Space Mono',monospace; font-size:12px; color:var(--red-bright); text-transform:none; }
+
+  .block{ margin-bottom:18px; }
+  .block-title{
+    font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--dim); margin-bottom:6px;
+  }
+  .ex-row{ display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-start; gap:4px 12px; padding:9px 0; border-bottom:1px solid var(--line); }
+  .ex-name{ font-family:'Inter',sans-serif; font-size:14px; font-weight:500; color:var(--ink); flex:1 1 55%; min-width:140px; overflow-wrap:break-word; }
+  .ex-idx{ font-family:'Space Mono',monospace; font-size:10.5px; color:var(--dimmer); margin-right:8px; }
+  .ex-detail{ font-family:'Space Mono',monospace; font-size:12px; color:var(--dim); text-align:right; flex:1 1 auto; min-width:0; overflow-wrap:break-word; }
+
+  .card-note{ font-size:12.5px; color:var(--dim); line-height:1.55; margin:6px 0 0; }
+
+  footer{
+    border-top:1px solid var(--line); padding:26px 0; margin-top:0;
+    font-family:'Space Mono',monospace; font-size:11px; color:var(--dimmer);
+  }
+  footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+
+  button:focus-visible, a:focus-visible{ outline:2px solid var(--red-bright); outline-offset:2px; }
+  @media (prefers-reduced-motion: reduce){ .summary{ animation:none !important; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo"><img src="data:image/png;base64,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" alt="REPX" style="height:22px; width:auto; display:block;"></div>
+    <div class="header-right">
+      <div class="header-sub" data-i18n="headerSub">Gerador de Treino</div>
+      <div class="lang-switch" id="langSwitch">
+        <button class="lang-btn" id="langBtn" type="button">
+          <span id="langBtnLabel">PT</span><span class="caret">▾</span>
+        </button>
+        <div class="lang-menu" id="langMenu">
+          <button class="lang-option active" data-lang="pt">Português</button>
+          <button class="lang-option" data-lang="en">English</button>
+          <button class="lang-option" data-lang="es">Español</button>
+          <button class="lang-option" data-lang="fr">Français</button>
+          <button class="lang-option" data-lang="de">Deutsch</button>
+          <button class="lang-option" data-lang="it">Italiano</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero-title">
+    <h1 data-i18n="heroTitle">Gerador de Treino</h1>
+    <p data-i18n="heroLede">Escolhe a modalidade e o nível. Sai o treino — sets e reps incluídos.</p>
+  </div>
+
+  <div class="app">
+    <div class="panel">
+      <div>
+        <div class="group-label" data-i18n="modalityLabel">Modalidade</div>
+        <div class="btn-row" id="modalityTabs">
+          <button class="pill-btn active" data-modality="crossfit" data-i18n="modCrossfit">CrossFit</button>
+          <button class="pill-btn" data-modality="hyrox" data-i18n="modHyrox">Hyrox</button>
+          <button class="pill-btn" data-modality="calistenia" data-i18n="modCalistenia">Calistenia</button>
+        </div>
+      </div>
+      <div>
+        <div class="group-label" data-i18n="levelLabel">Nível</div>
+        <div class="btn-row" id="levelBadges">
+          <button class="pill-btn active" data-level="scaled">Scaled · 10kg</button>
+          <button class="pill-btn" data-level="rx">RX · 20kg</button>
+          <button class="pill-btn" data-level="rxplus">RX+ · 25kg</button>
+        </div>
+        <div class="level-hint" id="levelHint"></div>
+      </div>
+      <button class="btn btn-primary" id="generateBtn" data-i18n="generateBtn">Gerar Treino</button>
+    </div>
+
+    <div class="canvas-col" id="planArea">
+      <div class="empty" data-i18n="empty">Ainda sem treino gerado. Escolhe a modalidade e o nível, depois carrega em Gerar Treino.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>REPX — THE REPETITION MINDSET</span>
+    <span>rscglobaldist@gmail.com · +351 931 984 477</span>
+  </div>
+</footer>
+
+<script>
+/* =========================================================================
+   REPX — Gerador de Treino (multi-idioma: PT/EN/ES/FR/DE/IT)
+   ========================================================================= */
+
+const LEVEL_TAG = { scaled:'SCALED', rx:'RX', rxplus:'RX+' };
+const LOAD_POOL_SIZE = { scaled:3, rx:2, rxplus:2 };
+
+const DURATION = {
+  crossfit:{scaled:35, rx:45, rxplus:55},
+  hyrox:{scaled:30, rx:42, rxplus:52},
+  calistenia:{scaled:30, rx:35, rxplus:42},
+};
+
+/* ---------- helpers ---------- */
+const rnd = arr => arr[Math.floor(Math.random()*arr.length)];
+const rndInt = (min,max) => Math.floor(Math.random()*(max-min+1))+min;
+function shuffle(arr){
+  const a=[...arr];
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+
+/* ---------- UI chrome strings (simple 1:1 text, driven by data-i18n) ---------- */
+const TR = {
+  pt:{ headerSub:'Gerador de Treino', heroTitle:'Gerador de Treino',
+       heroLede:'Escolhe a modalidade e o nível. Sai o treino — sets e reps incluídos.',
+       modalityLabel:'Modalidade', levelLabel:'Nível',
+       modCrossfit:'CrossFit', modHyrox:'Hyrox', modCalistenia:'Calistenia',
+       levelSub:{scaled:'Iniciante', rx:'Avançado', rxplus:'Elite'},
+       generateBtn:'Gerar Treino', generateAgain:'Gerar Outro',
+       empty:'Ainda sem treino gerado. Escolhe a modalidade e o nível, depois carrega em Gerar Treino.',
+       cardMeta:'CARTÃO Nº', dateLocale:'pt-PT' },
+  en:{ headerSub:'Workout Generator', heroTitle:'Workout Generator',
+       heroLede:'Choose the discipline and level. Get your workout — sets and reps included.',
+       modalityLabel:'Discipline', levelLabel:'Level',
+       modCrossfit:'CrossFit', modHyrox:'Hyrox', modCalistenia:'Calisthenics',
+       levelSub:{scaled:'Beginner', rx:'Advanced', rxplus:'Elite'},
+       generateBtn:'Generate Workout', generateAgain:'Generate Another',
+       empty:'No workout generated yet. Choose the discipline and level, then hit Generate Workout.',
+       cardMeta:'CARD NO.', dateLocale:'en-GB' },
+  es:{ headerSub:'Generador de Entrenamiento', heroTitle:'Generador de Entrenamiento',
+       heroLede:'Elige la modalidad y el nivel. Sale tu entrenamiento — sets y repeticiones incluidos.',
+       modalityLabel:'Modalidad', levelLabel:'Nivel',
+       modCrossfit:'CrossFit', modHyrox:'Hyrox', modCalistenia:'Calistenia',
+       levelSub:{scaled:'Principiante', rx:'Avanzado', rxplus:'Élite'},
+       generateBtn:'Generar Entrenamiento', generateAgain:'Generar Otro',
+       empty:'Todavía no hay entrenamiento generado. Elige la modalidad y el nivel, y pulsa Generar Entrenamiento.',
+       cardMeta:'TARJETA Nº', dateLocale:'es-ES' },
+  fr:{ headerSub:"Générateur d'Entraînement", heroTitle:"Générateur d'Entraînement",
+       heroLede:"Choisis la discipline et le niveau. Voici ton entraînement — séries et répétitions incluses.",
+       modalityLabel:'Discipline', levelLabel:'Niveau',
+       modCrossfit:'CrossFit', modHyrox:'Hyrox', modCalistenia:'Callisthénie',
+       levelSub:{scaled:'Débutant', rx:'Avancé', rxplus:'Élite'},
+       generateBtn:"Générer l'Entraînement", generateAgain:'Générer un Autre',
+       empty:"Aucun entraînement généré pour l'instant. Choisis la discipline et le niveau, puis appuie sur Générer l'Entraînement.",
+       cardMeta:'CARTE N°', dateLocale:'fr-FR' },
+  de:{ headerSub:'Trainingsgenerator', heroTitle:'Trainingsgenerator',
+       heroLede:'Wähle Disziplin und Level. Dein Workout — Sätze und Wiederholungen inklusive.',
+       modalityLabel:'Disziplin', levelLabel:'Level',
+       modCrossfit:'CrossFit', modHyrox:'Hyrox', modCalistenia:'Calisthenics',
+       levelSub:{scaled:'Anfänger', rx:'Fortgeschritten', rxplus:'Elite'},
+       generateBtn:'Workout Generieren', generateAgain:'Weiteres Generieren',
+       empty:'Noch kein Workout generiert. Wähle Disziplin und Level und tippe auf Workout Generieren.',
+       cardMeta:'KARTE NR.', dateLocale:'de-DE' },
+  it:{ headerSub:'Generatore di Allenamento', heroTitle:'Generatore di Allenamento',
+       heroLede:'Scegli la modalità e il livello. Ecco il tuo allenamento — serie e ripetizioni incluse.',
+       modalityLabel:'Modalità', levelLabel:'Livello',
+       modCrossfit:'CrossFit', modHyrox:'Hyrox', modCalistenia:'Calistenia',
+       levelSub:{scaled:'Principiante', rx:'Avanzato', rxplus:'Elite'},
+       generateBtn:'Genera Allenamento', generateAgain:'Genera un Altro',
+       empty:'Nessun allenamento generato ancora. Scegli modalità e livello, poi tocca Genera Allenamento.',
+       cardMeta:'SCHEDA N°', dateLocale:'it-IT' },
+};
+
+/* ---------- content pools (block titles, connector words, notes, load hints, calisthenics) ---------- */
+const CONTENT = {
+  pt:{
+    blockWords:{ aquecimento:'Aquecimento', forca:'Força', skill:'Skill', circuitoPrincipal:'Circuito Principal',
+      finisher:'Finisher', circuito:n=>`Circuito — ${n} rondas`,
+      mobGeral:'Mobilidade de ombros e anca', mobPunhos:'Mobilidade de ombros e punhos', mobSki:'Mobilidade + ski erg fácil' },
+    formatWords:{ minOdd:'Min ímpar', minEven:'Min par', perRound:'por ronda', perRoundHx:'1x por ronda',
+      paceSteady:'ritmo constante', paceStrong:'ritmo forte', paceEasy:'ritmo fácil', paceHyrox:'ritmo Hyrox',
+      suggestedLoad:'sugestão de carga — ajusta ao teu nível', technicalFocus:'foco técnico' },
+    notes:{ scaled:'Reduz a amplitude e usa assistência (elásticos, apoios, caixa) sempre que precisares. O objetivo é técnica limpa, não velocidade.',
+      rx:'Cumpre os movimentos como prescritos, com carga e amplitude completas. Mantém a técnica sob fadiga.',
+      rxplus:'Adiciona carga extra, encurta os descansos ou exige séries unbroken para intensificar. Só avanças para aqui se a técnica em RX estiver sólida.' },
+    loadHints:{ scaled:['carga leve','peso corporal','banda elástica'], rx:['carga moderada','carga RX'], rxplus:['carga pesada','carga RX+'] },
+    cal:{
+      push:{scaled:['Flexões inclinadas','Flexões de joelhos'], rx:['Flexões estritas','Dips no banco'], rxplus:['Flexões arqueiro','Dips lastrados em paralelas']},
+      pull:{scaled:['Remo australiano','Pull-up negativo'], rx:['Pull-up estrito','Chin-up'], rxplus:['Muscle-up','Pull-up lastrado']},
+      legs:{scaled:['Agachamento à cadeira','Afundo estático'], rx:['Pistol squat assistido','Afundo búlgaro'], rxplus:['Pistol squat livre','Salto pistol']},
+      core:{scaled:['Prancha','Elevação de pernas deitado'], rx:['L-sit','Elevação de pernas suspenso'], rxplus:['V-sit','Dragon flag']},
+      skill:{scaled:['Handstand na parede — 20s','Hollow hold — 20s'], rx:['Handstand livre — 20s','Hollow rock x15'], rxplus:['Handstand push-up','Front lever tuck — 15s']},
+    },
+  },
+  en:{
+    blockWords:{ aquecimento:'Warm-up', forca:'Strength', skill:'Skill', circuitoPrincipal:'Main Circuit',
+      finisher:'Finisher', circuito:n=>`Circuit — ${n} rounds`,
+      mobGeral:'Shoulder and hip mobility', mobPunhos:'Shoulder and wrist mobility', mobSki:'Mobility + easy ski erg' },
+    formatWords:{ minOdd:'Odd min', minEven:'Even min', perRound:'per round', perRoundHx:'1x per round',
+      paceSteady:'steady pace', paceStrong:'strong pace', paceEasy:'easy pace', paceHyrox:'Hyrox pace',
+      suggestedLoad:'suggested load — adjust to your level', technicalFocus:'technical focus' },
+    notes:{ scaled:'Reduce the range of motion and use assistance (bands, support, box) whenever you need it. The goal is clean technique, not speed.',
+      rx:'Perform the movements as prescribed, with full load and range of motion. Keep your technique sharp under fatigue.',
+      rxplus:'Add extra load, cut rest periods, or demand unbroken sets to raise the intensity. Only move up here once your RX technique is solid.' },
+    loadHints:{ scaled:['light load','bodyweight','resistance band'], rx:['moderate load','RX load'], rxplus:['heavy load','RX+ load'] },
+    cal:{
+      push:{scaled:['Incline Push-up','Knee Push-up'], rx:['Strict Push-up','Bench Dip'], rxplus:['Archer Push-up','Weighted Parallel Bar Dip']},
+      pull:{scaled:['Australian Row','Negative Pull-up'], rx:['Strict Pull-up','Chin-up'], rxplus:['Muscle-up','Weighted Pull-up']},
+      legs:{scaled:['Chair Squat','Static Lunge'], rx:['Assisted Pistol Squat','Bulgarian Split Squat'], rxplus:['Free Pistol Squat','Pistol Squat Jump']},
+      core:{scaled:['Plank','Lying Leg Raise'], rx:['L-sit','Hanging Leg Raise'], rxplus:['V-sit','Dragon Flag']},
+      skill:{scaled:['Wall Handstand — 20s','Hollow Hold — 20s'], rx:['Freestanding Handstand — 20s','Hollow Rock x15'], rxplus:['Handstand Push-up','Front Lever Tuck — 15s']},
+    },
+  },
+  es:{
+    blockWords:{ aquecimento:'Calentamiento', forca:'Fuerza', skill:'Skill', circuitoPrincipal:'Circuito Principal',
+      finisher:'Finisher', circuito:n=>`Circuito — ${n} rondas`,
+      mobGeral:'Movilidad de hombros y cadera', mobPunhos:'Movilidad de hombros y muñecas', mobSki:'Movilidad + ski erg suave' },
+    formatWords:{ minOdd:'Min impar', minEven:'Min par', perRound:'por ronda', perRoundHx:'1x por ronda',
+      paceSteady:'ritmo constante', paceStrong:'ritmo fuerte', paceEasy:'ritmo suave', paceHyrox:'ritmo Hyrox',
+      suggestedLoad:'carga sugerida — ajusta a tu nivel', technicalFocus:'foco técnico' },
+    notes:{ scaled:'Reduce la amplitud y usa asistencia (bandas, apoyos, cajón) siempre que lo necesites. El objetivo es técnica limpia, no velocidad.',
+      rx:'Ejecuta los movimientos tal como se prescriben, con carga y amplitud completas. Mantén la técnica bajo fatiga.',
+      rxplus:'Añade carga extra, acorta los descansos o exige series unbroken para intensificar. Solo pasa aquí si tu técnica en RX es sólida.' },
+    loadHints:{ scaled:['carga ligera','peso corporal','banda elástica'], rx:['carga moderada','carga RX'], rxplus:['carga pesada','carga RX+'] },
+    cal:{
+      push:{scaled:['Flexiones inclinadas','Flexiones de rodillas'], rx:['Flexiones estrictas','Fondos en banco'], rxplus:['Flexiones arquero','Fondos lastrados en paralelas']},
+      pull:{scaled:['Remo australiano','Dominada negativa'], rx:['Dominada estricta','Dominada supina'], rxplus:['Muscle-up','Dominada lastrada']},
+      legs:{scaled:['Sentadilla a silla','Zancada estática'], rx:['Pistol squat asistida','Zancada búlgara'], rxplus:['Pistol squat libre','Salto pistol']},
+      core:{scaled:['Plancha','Elevación de piernas tumbado'], rx:['L-sit','Elevación de piernas colgado'], rxplus:['V-sit','Dragon flag']},
+      skill:{scaled:['Pino en pared — 20s','Hollow hold — 20s'], rx:['Pino libre — 20s','Hollow rock x15'], rxplus:['Flexión de pino','Front lever tuck — 15s']},
+    },
+  },
+  fr:{
+    blockWords:{ aquecimento:'Échauffement', forca:'Force', skill:'Skill', circuitoPrincipal:'Circuit Principal',
+      finisher:'Finisher', circuito:n=>`Circuit — ${n} tours`,
+      mobGeral:'Mobilité des épaules et des hanches', mobPunhos:'Mobilité des épaules et des poignets', mobSki:'Mobilité + ski erg léger' },
+    formatWords:{ minOdd:'Min impaire', minEven:'Min paire', perRound:'par tour', perRoundHx:'1x par tour',
+      paceSteady:'rythme constant', paceStrong:'rythme soutenu', paceEasy:'rythme facile', paceHyrox:'rythme Hyrox',
+      suggestedLoad:'charge suggérée — ajuste à ton niveau', technicalFocus:'focus technique' },
+    notes:{ scaled:"Réduis l'amplitude et utilise de l'assistance (élastiques, appuis, box) quand tu en as besoin. L'objectif est une technique propre, pas la vitesse.",
+      rx:"Exécute les mouvements tels que prescrits, avec charge et amplitude complètes. Garde une technique solide sous la fatigue.",
+      rxplus:"Ajoute de la charge, réduis les repos ou exige des séries unbroken pour intensifier. Ne passe ici que si ta technique en RX est solide." },
+    loadHints:{ scaled:['charge légère','poids du corps','élastique'], rx:['charge modérée','charge RX'], rxplus:['charge lourde','charge RX+'] },
+    cal:{
+      push:{scaled:['Pompes inclinées','Pompes sur les genoux'], rx:['Pompes strictes','Dips sur banc'], rxplus:['Pompes archer','Dips lestés aux barres parallèles']},
+      pull:{scaled:['Rowing australien','Traction négative'], rx:['Traction stricte','Traction supination'], rxplus:['Muscle-up','Traction lestée']},
+      legs:{scaled:['Squat sur chaise','Fente statique'], rx:['Pistol squat assisté','Fente bulgare'], rxplus:['Pistol squat libre','Saut pistol']},
+      core:{scaled:['Planche','Relevé de jambes au sol'], rx:['L-sit','Relevé de jambes suspendu'], rxplus:['V-sit','Dragon flag']},
+      skill:{scaled:['ATR au mur — 20s','Hollow hold — 20s'], rx:['ATR libre — 20s','Hollow rock x15'], rxplus:['Handstand push-up','Front lever replié — 15s']},
+    },
+  },
+  de:{
+    blockWords:{ aquecimento:'Aufwärmen', forca:'Kraft', skill:'Skill', circuitoPrincipal:'Hauptzirkel',
+      finisher:'Finisher', circuito:n=>`Zirkel — ${n} Runden`,
+      mobGeral:'Schulter- und Hüftmobilität', mobPunhos:'Schulter- und Handgelenkmobilität', mobSki:'Mobility + lockeres Skierg' },
+    formatWords:{ minOdd:'Ungerade Min', minEven:'Gerade Min', perRound:'pro Runde', perRoundHx:'1x pro Runde',
+      paceSteady:'gleichmäßiges Tempo', paceStrong:'starkes Tempo', paceEasy:'lockeres Tempo', paceHyrox:'Hyrox-Tempo',
+      suggestedLoad:'Gewichtsvorschlag — passe ihn an dein Level an', technicalFocus:'technischer Fokus' },
+    notes:{ scaled:'Reduziere den Bewegungsradius und nutze Hilfsmittel (Bänder, Unterstützung, Box), wann immer nötig. Ziel ist saubere Technik, nicht Geschwindigkeit.',
+      rx:'Führe die Bewegungen wie vorgeschrieben aus, mit vollem Gewicht und vollem Bewegungsradius. Halte die Technik auch unter Ermüdung sauber.',
+      rxplus:'Füge zusätzliches Gewicht hinzu, verkürze die Pausen oder verlange unbroken Sätze, um die Intensität zu steigern. Wechsle erst hierher, wenn deine RX-Technik sicher sitzt.' },
+    loadHints:{ scaled:['leichtes Gewicht','Körpergewicht','Widerstandsband'], rx:['moderates Gewicht','RX-Gewicht'], rxplus:['schweres Gewicht','RX+-Gewicht'] },
+    cal:{
+      push:{scaled:['Liegestütz erhöht','Liegestütz auf Knien'], rx:['Strenger Liegestütz','Dips an der Bank'], rxplus:['Archer Liegestütz','Gewichtsdips am Barren']},
+      pull:{scaled:['Australian Pull-up','Negative Klimmzüge'], rx:['Strenge Klimmzüge','Chin-ups'], rxplus:['Muscle-up','Klimmzüge mit Zusatzgewicht']},
+      legs:{scaled:['Stuhl-Kniebeuge','Statischer Ausfallschritt'], rx:['Assistierter Pistol Squat','Bulgarischer Split Squat'], rxplus:['Freier Pistol Squat','Pistol Squat Sprung']},
+      core:{scaled:['Unterarmstütz','Liegende Beinheber'], rx:['L-sit','Hängende Beinheber'], rxplus:['V-sit','Dragon Flag']},
+      skill:{scaled:['Handstand an der Wand — 20s','Hollow Hold — 20s'], rx:['Freier Handstand — 20s','Hollow Rock x15'], rxplus:['Handstand Push-up','Front Lever Tuck — 15s']},
+    },
+  },
+  it:{
+    blockWords:{ aquecimento:'Riscaldamento', forca:'Forza', skill:'Skill', circuitoPrincipal:'Circuito Principale',
+      finisher:'Finisher', circuito:n=>`Circuito — ${n} round`,
+      mobGeral:'Mobilità di spalle e anca', mobPunhos:'Mobilità di spalle e polsi', mobSki:'Mobilità + ski erg leggero' },
+    formatWords:{ minOdd:'Min dispari', minEven:'Min pari', perRound:'per round', perRoundHx:'1x per round',
+      paceSteady:'ritmo costante', paceStrong:'ritmo sostenuto', paceEasy:'ritmo facile', paceHyrox:'ritmo Hyrox',
+      suggestedLoad:'carico suggerito — adattalo al tuo livello', technicalFocus:'focus tecnico' },
+    notes:{ scaled:"Riduci l'ampiezza e usa assistenza (elastici, appoggi, box) ogni volta che serve. L'obiettivo è una tecnica pulita, non la velocità.",
+      rx:'Esegui i movimenti come prescritto, con carico e ampiezza completi. Mantieni la tecnica sotto fatica.',
+      rxplus:'Aggiungi carico extra, riduci i recuperi o richiedi serie unbroken per intensificare. Passa qui solo se la tua tecnica in RX è solida.' },
+    loadHints:{ scaled:['carico leggero','peso corporeo','elastico'], rx:['carico moderato','carico RX'], rxplus:['carico pesante','carico RX+'] },
+    cal:{
+      push:{scaled:['Flessioni inclinate','Flessioni sulle ginocchia'], rx:['Flessioni strette','Dip su panca'], rxplus:['Flessioni arciere','Dip zavorrati alle parallele']},
+      pull:{scaled:['Rematore australiano','Trazione negativa'], rx:['Trazione stretta','Trazione supina'], rxplus:['Muscle-up','Trazione zavorrata']},
+      legs:{scaled:['Squat alla sedia','Affondo statico'], rx:['Pistol squat assistito','Affondo bulgaro'], rxplus:['Pistol squat libero','Salto pistol']},
+      core:{scaled:['Plank','Sollevamento gambe a terra'], rx:['L-sit','Sollevamento gambe in sospensione'], rxplus:['V-sit','Dragon flag']},
+      skill:{scaled:['Verticale al muro — 20s','Hollow hold — 20s'], rx:['Verticale libera — 20s','Hollow rock x15'], rxplus:['Handstand push-up','Front lever raccolto — 15s']},
+    },
+  },
+};
+
+/* ---------- CrossFit / Hyrox movement pools — international CrossFit/Hyrox terminology, same across languages ---------- */
+const CF_MOV = {
+  agachamento:{ scaled:['Air Squat','Goblet Squat (dumbbell)'], rx:['Back Squat','Front Squat'], rxplus:['Overhead Squat','Heavy Front Squat'] },
+  puxada:{ scaled:['Ring Row','Banded Pull-up'], rx:['Strict Pull-up','Kipping Pull-up'], rxplus:['Chest-to-Bar Pull-up','Bar Muscle-up'] },
+  empurre:{ scaled:['Knee Push-up','Light Push Press (dumbbells)'], rx:['Push Press','Strict Push-up'], rxplus:['Push Jerk','Handstand Push-up'] },
+  dobradica:{ scaled:['Russian KB Swing','Light Romanian Deadlift'], rx:['American KB Swing','Deadlift'], rxplus:['Heavy Clean','Heavy Deadlift'] },
+  olimpico:{ scaled:['DB Snatch','DB Clean'], rx:['Power Clean','Power Snatch'], rxplus:['Squat Clean','Squat Snatch'] },
+  core:{ scaled:['Sit-up','Hanging Knee Raise'], rx:['Toes-to-Bar','GHD Sit-up'], rxplus:['Unbroken Toes-to-Bar','Legless Rope Climb'] },
+  motor:{ scaled:['Run — 400m','Bike — 15 cal','Single-unders x50'], rx:['Row — 15 cal','Run — 400m','Double-unders x40'], rxplus:['Row — 21 cal','Run — 600m','Double-unders x60'] },
+};
+const HX_STATIONS = {
+  ski:{scaled:'Ski Erg — 400m', rx:'Ski Erg — 600m', rxplus:'Ski Erg — 800m'},
+  sledPush:{scaled:'Sled Push — 20m', rx:'Sled Push — 25m', rxplus:'Sled Push — 25m'},
+  sledPull:{scaled:'Sled Pull — 20m', rx:'Sled Pull — 25m', rxplus:'Sled Pull — 25m'},
+  burpee:{scaled:'Burpee Broad Jump x15', rx:'Burpee Broad Jump x25', rxplus:'Burpee Broad Jump x40'},
+  row:{scaled:'Row — 400m', rx:'Row — 600m', rxplus:'Row — 800m'},
+  farmers:{scaled:'Farmers Carry — 100m', rx:'Farmers Carry — 200m', rxplus:'Farmers Carry — 200m'},
+  lunges:{scaled:'Sandbag Lunges — 50m', rx:'Sandbag Lunges — 100m', rxplus:'Sandbag Lunges — 100m'},
+  wallball:{scaled:'Wall Balls x30', rx:'Wall Balls x75', rxplus:'Wall Balls x100'},
+  run:{scaled:'Run — 400m', rx:'Run — 1km', rxplus:'Run — 1km (strong pace)'},
+};
+
+/* ---------- field resolver: turns a ref into display text for a given language ---------- */
+function R(field, lang){
+  if(field==null) return '—';
+  if(typeof field !== 'object') return field; // plain literal (number or language-independent string)
+  const C = CONTENT[lang];
+  if(field.t==='cal') return C.cal[field.cat][field.level][field.idx];
+  if(field.t==='load') return C.loadHints[field.level][field.idx];
+  if(field.t==='fw') return C.formatWords[field.key];
+  if(field.t==='bw') return typeof C.blockWords[field.key]==='function' ? C.blockWords[field.key](field.n) : C.blockWords[field.key];
+  if(field.t==='composite') return field.parts.map(p=>R(p,lang)).join(field.sep||' ');
+  return '';
+}
+function loadField(level){ return {t:'load', level, idx: rndInt(0, LOAD_POOL_SIZE[level]-1)}; }
+
+/* ---------- CrossFit ---------- */
+function buildWarmupItems(level){
+  return [
+    { name:{t:'bw',key:'mobGeral'}, sets:1, reps:'3 min', carga:'—' },
+    { name: rnd(CF_MOV.motor[level]), sets:1, reps:{t:'fw',key:'paceEasy'}, carga:'—' },
+  ];
+}
+function buildStrengthItems(level){
+  const group = rnd(['agachamento','olimpico','dobradica']);
+  const scheme = {scaled:{sets:4,reps:8}, rx:{sets:5,reps:5}, rxplus:{sets:5,reps:3}}[level];
+  return [{ name: rnd(CF_MOV[group][level]), sets:scheme.sets, reps:scheme.reps, carga: loadField(level) }];
+}
+function repsFor(level, kind){
+  if(kind==='low') return {scaled:rndInt(5,8), rx:rndInt(3,6), rxplus:rndInt(1,4)}[level];
+  return {scaled:rndInt(8,12), rx:rndInt(10,15), rxplus:rndInt(15,21)}[level];
+}
+function buildCrossfitWod(level){
+  const format = rnd(['AMRAP','FOR_TIME','EMOM']);
+  if(format==='AMRAP'){
+    const duration = {scaled:10, rx:15, rxplus:20}[level];
+    const titleField = `AMRAP ${duration} min`;
+    const items = [
+      { name: rnd(CF_MOV.motor[level]), sets:{t:'fw',key:'perRound'}, reps:'—', carga:{t:'fw',key:'paceSteady'} },
+      { name: rnd([...CF_MOV.puxada[level], ...CF_MOV.empurre[level]]), sets:{t:'fw',key:'perRound'}, reps: repsFor(level,'high'), carga: loadField(level) },
+      { name: rnd([...CF_MOV.agachamento[level], ...CF_MOV.dobradica[level]]), sets:{t:'fw',key:'perRound'}, reps: repsFor(level,'low'), carga: loadField(level) },
+    ];
+    return {titleField, items};
+  }
+  if(format==='FOR_TIME'){
+    const scheme = '21-15-9';
+    const titleField = `For Time — ${scheme}`;
+    const items = [
+      { name: rnd(CF_MOV.olimpico[level]), sets:3, reps:scheme, carga: loadField(level) },
+      { name: rnd([...CF_MOV.core[level], ...CF_MOV.puxada[level]]), sets:3, reps:scheme, carga: loadField(level) },
+      { name: rnd(CF_MOV.motor[level]), sets:3, reps:'—', carga:{t:'fw',key:'paceStrong'} },
+    ];
+    return {titleField, items};
+  }
+  const duration = {scaled:10, rx:14, rxplus:18}[level];
+  const titleField = `EMOM ${duration} min`;
+  const items = [
+    { name:{t:'composite', sep:' — ', parts:[{t:'fw',key:'minOdd'}, rnd([...CF_MOV.puxada[level], ...CF_MOV.empurre[level]])]}, sets:`${duration/2} min`, reps: repsFor(level,'high'), carga: loadField(level) },
+    { name:{t:'composite', sep:' — ', parts:[{t:'fw',key:'minEven'}, rnd([...CF_MOV.agachamento[level], ...CF_MOV.dobradica[level]])]}, sets:`${duration/2} min`, reps: repsFor(level,'low'), carga: loadField(level) },
+  ];
+  return {titleField, items};
+}
+function generateCrossfit(level){
+  const wod = buildCrossfitWod(level);
+  return { modality:'crossfit', level, blocks:[
+    { titleField:{t:'bw',key:'aquecimento'}, items:buildWarmupItems(level) },
+    { titleField:{t:'bw',key:'forca'}, items:buildStrengthItems(level) },
+    { titleField: wod.titleField, items: wod.items },
+  ]};
+}
+
+/* ---------- Hyrox ---------- */
+function generateHyrox(level){
+  const stationKeys = Object.keys(HX_STATIONS).filter(k=>k!=='run');
+  const chosen = shuffle(stationKeys).slice(0,3);
+  const rounds = {scaled:2, rx:3, rxplus:4}[level];
+  const items = [
+    { name: HX_STATIONS.run[level], sets: rounds, reps:{t:'fw',key:'perRoundHx'}, carga:{t:'fw',key:'paceHyrox'} },
+    ...chosen.map(k=>({ name: HX_STATIONS[k][level], sets: rounds, reps:{t:'fw',key:'perRoundHx'}, carga:{t:'fw',key:'suggestedLoad'} })),
+  ];
+  return { modality:'hyrox', level, blocks:[
+    { titleField:{t:'bw',key:'aquecimento'}, items:[{ name:{t:'bw',key:'mobSki'}, sets:1, reps:'5 min', carga:'—' }] },
+    { titleField:{t:'bw',key:'circuito', n:rounds}, items },
+    { titleField:{t:'bw',key:'finisher'}, items:[{ name: rnd(['Plank','Dead Bug','Bar Grip Hold']), sets:3, reps: rnd(['40s','12','30s']), carga:'—' }] },
+  ]};
+}
+
+/* ---------- Calistenia ---------- */
+function generateCalistenia(level){
+  const scheme = {scaled:{sets:3,reps:10}, rx:{sets:4,reps:8}, rxplus:{sets:5,reps:6}}[level];
+  const items = ['push','pull','legs','core'].map(cat=>({
+    name:{t:'cal', cat, level, idx: rndInt(0,1)}, sets:scheme.sets, reps:scheme.reps, carga: loadField(level),
+  }));
+  return { modality:'calistenia', level, blocks:[
+    { titleField:{t:'bw',key:'aquecimento'}, items:[{ name:{t:'bw',key:'mobPunhos'}, sets:1, reps:'5 min', carga:'—' }] },
+    { titleField:{t:'bw',key:'skill'}, items:[{ name:{t:'cal',cat:'skill',level,idx:rndInt(0,1)}, sets:3, reps:'—', carga:{t:'fw',key:'technicalFocus'} }] },
+    { titleField:{t:'bw',key:'circuitoPrincipal'}, items },
+  ]};
+}
+
+function generatePlan(modality, level){
+  if(modality==='crossfit') return generateCrossfit(level);
+  if(modality==='hyrox') return generateHyrox(level);
+  return generateCalistenia(level);
+}
+
+/* ---------- state ---------- */
+let modality = 'crossfit';
+let level = 'scaled';
+let currentLang = 'pt';
+let currentPlan = null;
+let cardId = rndInt(1000,9999);
+
+const modalityTabs = document.getElementById('modalityTabs');
+const levelBadges = document.getElementById('levelBadges');
+const generateBtn = document.getElementById('generateBtn');
+const planArea = document.getElementById('planArea');
+const levelHint = document.getElementById('levelHint');
+
+function esc(str){
+  return String(str).replace(/[&<>]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+}
+
+function updateLevelHint(){
+  levelHint.textContent = '→ ' + TR[currentLang].levelSub[level];
+}
+
+modalityTabs.addEventListener('click', e=>{
+  const btn = e.target.closest('.pill-btn');
+  if(!btn) return;
+  modality = btn.dataset.modality;
+  [...modalityTabs.children].forEach(b=>b.classList.toggle('active', b===btn));
+});
+
+levelBadges.addEventListener('click', e=>{
+  const btn = e.target.closest('.pill-btn');
+  if(!btn) return;
+  level = btn.dataset.level;
+  [...levelBadges.children].forEach(b=>b.classList.toggle('active', b===btn));
+  updateLevelHint();
+});
+
+generateBtn.addEventListener('click', ()=>{
+  currentPlan = generatePlan(modality, level);
+  cardId += 1;
+  renderPlan();
+  generateBtn.textContent = TR[currentLang].generateAgain;
+});
+
+function renderBlock(block, idx, lang){
+  const rows = block.items.map(item=>`
+    <div class="ex-row">
+      <span class="ex-name">${esc(R(item.name,lang))}</span>
+      <span class="ex-detail">${esc(R(item.sets,lang))}×${esc(R(item.reps,lang))}${ (item.carga && R(item.carga,lang)!=='—') ? ' · '+esc(R(item.carga,lang)) : '' }</span>
+    </div>`).join('');
+  return `<div class="block"><div class="block-title">${String(idx+1).padStart(2,'0')} — ${esc(R(block.titleField,lang))}</div>${rows}</div>`;
+}
+
+function renderPlan(){
+  if(!currentPlan){
+    planArea.innerHTML = `<div class="empty" data-i18n="empty">${esc(TR[currentLang].empty)}</div>`;
+    return;
+  }
+  const U = TR[currentLang];
+  const today = new Date().toLocaleDateString(U.dateLocale, {day:'2-digit', month:'2-digit', year:'numeric'});
+  const duration = DURATION[currentPlan.modality][currentPlan.level];
+  const modName = { crossfit:U.modCrossfit, hyrox:U.modHyrox, calistenia:U.modCalistenia }[currentPlan.modality];
+  const blocksHtml = currentPlan.blocks.map((b,i)=>renderBlock(b,i,currentLang)).join('');
+  planArea.innerHTML = `
+    <div class="summary">
+      <div class="card-meta"><span>${esc(U.cardMeta)} ${cardId}</span><span>${today}</span></div>
+      <h3>${esc(modName)} · ${LEVEL_TAG[currentPlan.level]}<span class="card-duration">~${duration} min</span></h3>
+      ${blocksHtml}
+      <p class="card-note">${esc(CONTENT[currentLang].notes[currentPlan.level])}</p>
+    </div>`;
+}
+
+/* ---------- language switcher ---------- */
+function applyLang(lang){
+  currentLang = lang;
+  document.documentElement.setAttribute('lang', lang);
+
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    if(TR[lang][key] !== undefined) el.textContent = TR[lang][key];
+  });
+
+  document.getElementById('langBtnLabel').textContent = lang.toUpperCase();
+  document.querySelectorAll('.lang-option').forEach(btn=>{
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+
+  generateBtn.textContent = currentPlan ? TR[lang].generateAgain : TR[lang].generateBtn;
+  updateLevelHint();
+  renderPlan();
+}
+
+document.getElementById('langBtn').addEventListener('click', e=>{
+  e.stopPropagation();
+  document.getElementById('langMenu').classList.toggle('open');
+});
+document.addEventListener('click', ()=> document.getElementById('langMenu').classList.remove('open'));
+document.getElementById('langMenu').addEventListener('click', e=>{
+  const btn = e.target.closest('.lang-option'); if(!btn) return;
+  e.stopPropagation();
+  applyLang(btn.dataset.lang);
+  document.getElementById('langMenu').classList.remove('open');
+});
+
+/* ---------- init ---------- */
+updateLevelHint();
+
+</script>
+</body>
+</html>
