@@ -1,0 +1,20 @@
+# REPX
+
+> REPX is a cross-training apparel and gear brand — part of RSC Distribution's brand portfolio — built for CrossFit, Hyrox and Calisthenics athletes. Brand tagline: "The Repetition Mindset."
+
+REPX designs and distributes technical apparel for cross-training, and offers free interactive tools for athletes and B2B buyers directly on its site.
+
+## Pages
+
+- [Home](https://repx.pt/): Brand overview, product range, and B2B manufacturing (private label) information for sports retailers.
+- [Gerador de Treino](https://repx.pt/repx-treino.html): Free workout plan generator for CrossFit, Hyrox and Calisthenics. Choose a discipline and a level — Scaled (beginner), RX (advanced), or RX+ (elite) — to get sets and reps for a full training session. Available in Portuguese, English, Spanish, French, German and Italian.
+- [Simulador de Personalização](https://repx.pt/repx-simulador.html): Visual print/customization simulator for REPX apparel (t-shirts, hoodies, sweatshirts) — lets B2B buyers preview garment, fabric, color and print placement before approving a manufacturing quote.
+
+## About
+
+REPX is one of four proprietary brands distributed by RSC Distribution, a Portugal-based multibrand sports, fitness and surf distributor. The other brands are Trendout (casual/technical apparel), Anidriz (women's fitness and athleisure), and RSB (bodyboard and surf culture).
+
+## Contact
+
+- Email: rscglobaldist@gmail.com
+- Phone: +351 931 984 477

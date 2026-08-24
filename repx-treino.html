@@ -224,6 +224,15 @@
 
   button:focus-visible, a:focus-visible{ outline:2px solid var(--red-bright); outline-offset:2px; }
   @media (prefers-reduced-motion: reduce){ .summary{ animation:none !important; } }
+
+  .about-section{ padding:8px 0 48px; border-top:1px solid var(--line); margin-top:8px; }
+  .about-section h2{ font-family:'Oswald',sans-serif; font-size:20px; text-transform:uppercase; margin:32px 0 10px; }
+  .about-section > .wrap > p{ color:var(--dim); font-size:13.5px; line-height:1.6; max-width:640px; margin:0 0 24px; }
+  .example-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
+  @media (max-width:900px){ .example-grid{ grid-template-columns:1fr; } }
+  .example-card{ background:var(--black2); border:1px solid var(--line); border-radius:10px; padding:16px; }
+  .example-card h3{ font-family:'Oswald',sans-serif; font-size:14px; text-transform:uppercase; margin:0 0 8px; }
+  .example-card p{ font-family:'Space Mono',monospace; font-size:11.5px; color:var(--dim); line-height:1.7; margin:0; }
 </style>
 </head>
 <body>
@@ -284,6 +293,27 @@
   </div>
 </div>
 
+<section class="about-section">
+  <div class="wrap">
+    <h2 data-i18n="aboutHeading">Sobre o Gerador de Treino REPX</h2>
+    <p data-i18n="aboutText">O Gerador de Treino REPX cria planos de treino gratuitos para CrossFit, Hyrox e Calistenia. Escolhe um dos três níveis — Scaled (iniciante), RX (avançado) ou RX+ (elite) — e recebe sets e reps prontos a treinar, com aquecimento, bloco principal e notas de coaching específicas do nível.</p>
+    <div class="example-grid">
+      <div class="example-card">
+        <h3>CrossFit — RX</h3>
+        <p>AMRAP 15 min:<br>Row — 15 cal<br>10x Kipping Pull-up<br>8x Back Squat (carga moderada)</p>
+      </div>
+      <div class="example-card">
+        <h3>Hyrox — RX</h3>
+        <p>Circuito — 3 rondas:<br>Run — 1km<br>Sled Push — 25m<br>Wall Balls x75</p>
+      </div>
+      <div class="example-card">
+        <h3>Calistenia — RX</h3>
+        <p>4×8:<br>Strict Pull-up<br>Strict Push-up<br>Bulgarian Split Squat<br>L-sit</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <span>REPX — THE REPETITION MINDSET</span>
@@ -323,7 +353,9 @@ const TR = {
        levelSub:{scaled:'Iniciante', rx:'Avançado', rxplus:'Elite'},
        generateBtn:'Gerar Treino', generateAgain:'Gerar Outro',
        empty:'Ainda sem treino gerado. Escolhe a modalidade e o nível, depois carrega em Gerar Treino.',
-       cardMeta:'CARTÃO Nº', dateLocale:'pt-PT' },
+       cardMeta:'CARTÃO Nº', dateLocale:'pt-PT',
+       aboutHeading:'Sobre o Gerador de Treino REPX',
+       aboutText:'O Gerador de Treino REPX cria planos de treino gratuitos para CrossFit, Hyrox e Calistenia. Escolhe um dos três níveis — Scaled (iniciante), RX (avançado) ou RX+ (elite) — e recebe sets e reps prontos a treinar, com aquecimento, bloco principal e notas de coaching específicas do nível.' },
   en:{ headerSub:'Workout Generator', heroTitle:'Workout Generator',
        heroLede:'Choose the discipline and level. Get your workout — sets and reps included.',
        modalityLabel:'Discipline', levelLabel:'Level',
@@ -331,7 +363,9 @@ const TR = {
        levelSub:{scaled:'Beginner', rx:'Advanced', rxplus:'Elite'},
        generateBtn:'Generate Workout', generateAgain:'Generate Another',
        empty:'No workout generated yet. Choose the discipline and level, then hit Generate Workout.',
-       cardMeta:'CARD NO.', dateLocale:'en-GB' },
+       cardMeta:'CARD NO.', dateLocale:'en-GB',
+       aboutHeading:'About the REPX Workout Generator',
+       aboutText:'The REPX Workout Generator creates free training plans for CrossFit, Hyrox and Calisthenics. Pick one of three levels — Scaled (beginner), RX (advanced) or RX+ (elite) — and get sets and reps ready to train, with a warm-up, a main block and level-specific coaching notes.' },
   es:{ headerSub:'Generador de Entrenamiento', heroTitle:'Generador de Entrenamiento',
        heroLede:'Elige la modalidad y el nivel. Sale tu entrenamiento — sets y repeticiones incluidos.',
        modalityLabel:'Modalidad', levelLabel:'Nivel',
@@ -339,7 +373,9 @@ const TR = {
        levelSub:{scaled:'Principiante', rx:'Avanzado', rxplus:'Élite'},
        generateBtn:'Generar Entrenamiento', generateAgain:'Generar Otro',
        empty:'Todavía no hay entrenamiento generado. Elige la modalidad y el nivel, y pulsa Generar Entrenamiento.',
-       cardMeta:'TARJETA Nº', dateLocale:'es-ES' },
+       cardMeta:'TARJETA Nº', dateLocale:'es-ES',
+       aboutHeading:'Sobre el Generador de Entrenamiento REPX',
+       aboutText:'El Generador de Entrenamiento REPX crea planes de entrenamiento gratuitos para CrossFit, Hyrox y Calistenia. Elige uno de los tres niveles — Scaled (principiante), RX (avanzado) o RX+ (élite) — y recibe sets y repeticiones listos para entrenar, con calentamiento, bloque principal y notas de coaching según el nivel.' },
   fr:{ headerSub:"Générateur d'Entraînement", heroTitle:"Générateur d'Entraînement",
        heroLede:"Choisis la discipline et le niveau. Voici ton entraînement — séries et répétitions incluses.",
        modalityLabel:'Discipline', levelLabel:'Niveau',
@@ -347,7 +383,9 @@ const TR = {
        levelSub:{scaled:'Débutant', rx:'Avancé', rxplus:'Élite'},
        generateBtn:"Générer l'Entraînement", generateAgain:'Générer un Autre',
        empty:"Aucun entraînement généré pour l'instant. Choisis la discipline et le niveau, puis appuie sur Générer l'Entraînement.",
-       cardMeta:'CARTE N°', dateLocale:'fr-FR' },
+       cardMeta:'CARTE N°', dateLocale:'fr-FR',
+       aboutHeading:"À propos du Générateur d'Entraînement REPX",
+       aboutText:"Le Générateur d'Entraînement REPX crée des plans d'entraînement gratuits pour le CrossFit, le Hyrox et la Callisthénie. Choisis l'un des trois niveaux — Scaled (débutant), RX (avancé) ou RX+ (élite) — et reçois des séries et répétitions prêtes à l'emploi, avec échauffement, bloc principal et notes de coaching selon le niveau." },
   de:{ headerSub:'Trainingsgenerator', heroTitle:'Trainingsgenerator',
        heroLede:'Wähle Disziplin und Level. Dein Workout — Sätze und Wiederholungen inklusive.',
        modalityLabel:'Disziplin', levelLabel:'Level',
@@ -355,7 +393,9 @@ const TR = {
        levelSub:{scaled:'Anfänger', rx:'Fortgeschritten', rxplus:'Elite'},
        generateBtn:'Workout Generieren', generateAgain:'Weiteres Generieren',
        empty:'Noch kein Workout generiert. Wähle Disziplin und Level und tippe auf Workout Generieren.',
-       cardMeta:'KARTE NR.', dateLocale:'de-DE' },
+       cardMeta:'KARTE NR.', dateLocale:'de-DE',
+       aboutHeading:'Über den REPX Trainingsgenerator',
+       aboutText:'Der REPX Trainingsgenerator erstellt kostenlose Trainingspläne für CrossFit, Hyrox und Calisthenics. Wähle eines von drei Levels — Scaled (Anfänger), RX (Fortgeschritten) oder RX+ (Elite) — und erhalte Sätze und Wiederholungen, trainingsbereit, mit Aufwärmen, Hauptblock und levelspezifischen Coaching-Hinweisen.' },
   it:{ headerSub:'Generatore di Allenamento', heroTitle:'Generatore di Allenamento',
        heroLede:'Scegli la modalità e il livello. Ecco il tuo allenamento — serie e ripetizioni incluse.',
        modalityLabel:'Modalità', levelLabel:'Livello',
@@ -363,7 +403,9 @@ const TR = {
        levelSub:{scaled:'Principiante', rx:'Avanzato', rxplus:'Elite'},
        generateBtn:'Genera Allenamento', generateAgain:'Genera un Altro',
        empty:'Nessun allenamento generato ancora. Scegli modalità e livello, poi tocca Genera Allenamento.',
-       cardMeta:'SCHEDA N°', dateLocale:'it-IT' },
+       cardMeta:'SCHEDA N°', dateLocale:'it-IT',
+       aboutHeading:"Sul Generatore di Allenamento REPX",
+       aboutText:"Il Generatore di Allenamento REPX crea piani di allenamento gratuiti per CrossFit, Hyrox e Calistenia. Scegli uno dei tre livelli — Scaled (principiante), RX (avanzato) o RX+ (elite) — e ricevi serie e ripetizioni pronte per allenarti, con riscaldamento, blocco principale e note di coaching specifiche per livello." },
 };
 
 /* ---------- content pools (block titles, connector words, notes, load hints, calisthenics) ---------- */
