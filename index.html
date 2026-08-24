@@ -813,8 +813,8 @@ font-size: 13px; color: var(--dimmer);
   <a href="#mercados" data-i18n="nav-mercados">Mercados</a>
   <a href="#loja" data-i18n="nav-loja">Loja</a>
   <a href="#contacto" data-i18n="nav-contacto">Contacto</a>
-  <a href="repx-simulador.html" target="_blank" rel="noopener" class="nav-cta nav-cta-sim" style="text-align:center;" data-i18n="nav-cta-sim">Simulador</a>
-  <a href="repx-treino.html" target="_blank" rel="noopener" class="nav-cta nav-cta-sim" style="text-align:center;" data-i18n="nav-cta-workout">Gerador de Treino</a>
+  <a href="repx-simulador.html" target="_blank" rel="noopener" class="nav-cta nav-cta-sim" id="navCtaSim" style="text-align:center;" data-i18n="nav-cta-sim">Simulador</a>
+  <a href="repx-treino.html" target="_blank" rel="noopener" class="nav-cta nav-cta-sim" id="navCtaWorkout" style="text-align:center;" data-i18n="nav-cta-workout">Gerador de Treino</a>
   <a href="#contacto" class="nav-cta" style="text-align:center;" data-i18n="nav-cta">Pedir Catálogo</a>
   <div class="mobile-lang-row" id="mobileLangRow">
     <button class="active" data-lang="pt">PT</button>
@@ -838,12 +838,12 @@ font-size: 13px; color: var(--dimmer);
     <h1 class="headline">The Repetition<span class="line2">Mindset.</span></h1>
     <p class="subtext" data-i18n="hero-subtext">Vestuário construído para quem treina pela repetição — mais uma série, mais uma rep. Técnico, resistente e sem tretas. Feito em Portugal para atletas, boxes e equipas em toda a Europa.</p>
     <div class="hero-ctas">
-      <a href="repx-simulador.html" target="_blank" rel="noopener" class="btn btn-simulator">
+      <a href="repx-simulador.html" target="_blank" rel="noopener" class="btn btn-simulator" id="heroCtaSim">
         <span class="btn-simulator-badge">NOVO</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:16px;height:16px;"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4"/></svg>
         <span data-i18n="hero-cta-sim">Simulador</span>
       </a>
-      <a href="repx-treino.html" target="_blank" rel="noopener" class="btn btn-simulator">
+      <a href="repx-treino.html" target="_blank" rel="noopener" class="btn btn-simulator" id="heroCtaWorkout">
         <span class="btn-simulator-badge">NOVO</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:16px;height:16px;"><path d="M6.5 6.5 17.5 17.5"/><path d="M2 8v8"/><path d="M22 8v8"/><rect x="3" y="6" width="4" height="12" rx="1"/><rect x="17" y="6" width="4" height="12" rx="1"/></svg>
         <span data-i18n="hero-cta-workout">Gerador de Treino</span>
@@ -1500,6 +1500,14 @@ font-size: 13px; color: var(--dimmer);
     });
     document.querySelectorAll('#mobileLangRow button').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+    ['navCtaSim','heroCtaSim'].forEach(id => {
+      const el = document.getElementById(id);
+      if(el) el.setAttribute('href', 'repx-simulador.html?lang=' + lang);
+    });
+    ['navCtaWorkout','heroCtaWorkout'].forEach(id => {
+      const el = document.getElementById(id);
+      if(el) el.setAttribute('href', 'repx-treino.html?lang=' + lang);
     });
   }
 

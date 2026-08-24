@@ -758,6 +758,12 @@ document.getElementById('langMenu').addEventListener('click', e=>{
 /* ---------- init ---------- */
 updateLevelHint();
 
+const urlLang = new URLSearchParams(window.location.search).get('lang');
+const supportedLangs = ['pt','en','es','fr','de','it'];
+if(urlLang && supportedLangs.includes(urlLang) && urlLang !== currentLang){
+  applyLang(urlLang);
+}
+
 </script>
 </body>
 </html>
