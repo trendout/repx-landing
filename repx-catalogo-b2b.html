@@ -96,6 +96,13 @@ header .wrap{ display:flex; align-items:center; justify-content:space-between; }
   font-size:clamp(30px, 5vw, 48px); margin:0 0 12px; line-height:1.05;
 }
 .intro p{ color:var(--dim); font-size:14.5px; max-width:560px; line-height:1.6; margin:0; }
+.cta-simulator{
+  display:inline-flex; align-items:center; gap:8px; margin-top:22px;
+  font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.05em; text-transform:uppercase;
+  background:var(--red); color:#fff; text-decoration:none; padding:13px 20px; border-radius:6px;
+  transition:background .2s ease, transform .2s ease;
+}
+.cta-simulator:hover{ background:var(--red-bright); transform:translateY(-1px); }
 .intro .tag{
   display:inline-block; font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.1em;
   text-transform:uppercase; color:var(--red-bright); border:1px solid var(--red-deep);
@@ -238,6 +245,7 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:1
     <span class="tag" data-i18n="introTag">Sem preços · Só para clientes</span>
     <h1 data-i18n="introH1">Catálogo REPX</h1>
     <p data-i18n="introP">Gama atual por categoria. Para preços, MOQs e prazos de fabrico, fala diretamente connosco.</p>
+    <a href="repx-simulador.html?lang=pt" target="_blank" rel="noopener" class="cta-simulator" id="ctaSimulator" data-i18n="ctaSimulator">Produzir o Merchandise da Tua Empresa</a>
   </div>
 
   <!-- HOODIES -->
@@ -324,6 +332,7 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:1
     introTag: {pt:'Sem preços · Só para clientes', en:'No prices · Clients only', es:'Sin precios · Solo clientes', fr:'Sans prix · Clients uniquement', de:'Ohne Preise · Nur für Kunden', it:'Senza prezzi · Solo clienti'},
     introH1: {pt:'Catálogo REPX', en:'REPX Catalog', es:'Catálogo REPX', fr:'Catalogue REPX', de:'REPX-Katalog', it:'Catalogo REPX'},
     introP: {pt:'Gama atual por categoria. Para preços, MOQs e prazos de fabrico, fala diretamente connosco.', en:'Current range by category. For prices, MOQs and manufacturing lead times, talk to us directly.', es:'Gama actual por categoría. Para precios, MOQs y plazos de fabricación, habla directamente con nosotros.', fr:'Gamme actuelle par catégorie. Pour les prix, MOQ et délais de fabrication, contacte-nous directement.', de:'Aktuelles Sortiment nach Kategorie. Für Preise, MOQs und Fertigungszeiten sprich direkt mit uns.', it:'Gamma attuale per categoria. Per prezzi, MOQ e tempi di produzione, contattaci direttamente.'},
+    ctaSimulator: {pt:'Produzir o Merchandise da Tua Empresa', en:'Produce Your Company\u2019s Merchandise', es:'Produce el Merchandising de tu Empresa', fr:'Produis les Goodies de ton Entreprise', de:'Produziere das Merchandise deines Unternehmens', it:'Produci il Merchandising della tua Azienda'},
     categoriaEyebrow: {pt:'Categoria', en:'Category', es:'Categoría', fr:'Catégorie', de:'Kategorie', it:'Categoria'},
     catHoodies: {pt:'Hoodies', en:'Hoodies', es:'Sudaderas con Capucha', fr:'Sweats à Capuche', de:'Hoodies', it:'Felpe con Cappuccio'},
     catSweatshirts: {pt:'Sweatshirts', en:'Sweatshirts', es:'Sudaderas', fr:'Sweatshirts', de:'Sweatshirts', it:'Felpe'},
@@ -361,6 +370,7 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:1
     document.querySelectorAll('.lang-option').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.lang === lang);
     });
+    document.getElementById('ctaSimulator').setAttribute('href', 'repx-simulador.html?lang=' + lang);
   }
 
   const langBtn = document.getElementById('langBtn');
