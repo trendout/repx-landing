@@ -168,8 +168,9 @@ footer{
   border-top:1px solid var(--line); padding:26px 0; margin-top:60px;
   font-family:'Space Mono',monospace; font-size:11px; color:var(--dimmer);
 }
-footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
-@media (max-width:600px){ footer .wrap{ flex-direction:column; gap:6px; text-align:center; } }
+.commercial-note{ color:var(--dim); font-size:11px; line-height:1.6; margin-bottom:14px; max-width:640px; }
+.footer-row{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+@media (max-width:600px){ .footer-row{ flex-direction:column; gap:6px; text-align:center; } .commercial-note{ text-align:center; } }
 
 /* ---------- email gate ---------- */
 #gate{
@@ -311,10 +312,16 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:1
 
 </div>
 
+<div class="wrap">
+  <div class="commercial-note" data-i18n="commercialNote">Nota Comercial: Encomenda mínima de 300€. Portes de envio calculados depois do cálculo do volume e peso da encomenda. Em alguns casos os portes de envio podem ser grátis.</div>
+</div>
+
 <footer>
   <div class="wrap">
-    <span>REPX — THE REPETITION MINDSET</span>
-    <span>rscglobaldist@gmail.com · +351 931 984 477</span>
+    <div class="footer-row">
+      <span>REPX — THE REPETITION MINDSET</span>
+      <span>rscglobaldist@gmail.com · +351 931 984 477</span>
+    </div>
   </div>
 </footer>
 
@@ -333,6 +340,14 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:1
     introH1: {pt:'Catálogo REPX', en:'REPX Catalog', es:'Catálogo REPX', fr:'Catalogue REPX', de:'REPX-Katalog', it:'Catalogo REPX'},
     introP: {pt:'Gama atual por categoria. Para preços, MOQs e prazos de fabrico, fala diretamente connosco.', en:'Current range by category. For prices, MOQs and manufacturing lead times, talk to us directly.', es:'Gama actual por categoría. Para precios, MOQs y plazos de fabricación, habla directamente con nosotros.', fr:'Gamme actuelle par catégorie. Pour les prix, MOQ et délais de fabrication, contacte-nous directement.', de:'Aktuelles Sortiment nach Kategorie. Für Preise, MOQs und Fertigungszeiten sprich direkt mit uns.', it:'Gamma attuale per categoria. Per prezzi, MOQ e tempi di produzione, contattaci direttamente.'},
     ctaSimulator: {pt:'Produzir o Merchandise da Tua Empresa', en:'Produce Your Company\u2019s Merchandise', es:'Produce el Merchandising de tu Empresa', fr:'Produis les Goodies de ton Entreprise', de:'Produziere das Merchandise deines Unternehmens', it:'Produci il Merchandising della tua Azienda'},
+    commercialNote: {
+      pt:'Nota Comercial: Encomenda mínima de 300€. Portes de envio calculados depois do cálculo do volume e peso da encomenda. Em alguns casos os portes de envio podem ser grátis.',
+      en:'Commercial Note: Minimum order of €300. Shipping costs are calculated after working out the order\u2019s volume and weight. In some cases shipping may be free.',
+      es:'Nota Comercial: Pedido mínimo de 300€. Los gastos de envío se calculan después de calcular el volumen y peso del pedido. En algunos casos el envío puede ser gratuito.',
+      fr:'Note Commerciale\u00a0: Commande minimum de 300€. Les frais de port sont calculés après le calcul du volume et du poids de la commande. Dans certains cas, la livraison peut être gratuite.',
+      de:'Geschäftshinweis: Mindestbestellwert 300€. Die Versandkosten werden nach Berechnung von Volumen und Gewicht der Bestellung ermittelt. In manchen Fällen kann der Versand kostenlos sein.',
+      it:'Nota Commerciale: Ordine minimo di 300€. Le spese di spedizione vengono calcolate dopo aver determinato volume e peso dell\u2019ordine. In alcuni casi la spedizione può essere gratuita.',
+    },
     categoriaEyebrow: {pt:'Categoria', en:'Category', es:'Categoría', fr:'Catégorie', de:'Kategorie', it:'Categoria'},
     catHoodies: {pt:'Hoodies', en:'Hoodies', es:'Sudaderas con Capucha', fr:'Sweats à Capuche', de:'Hoodies', it:'Felpe con Cappuccio'},
     catSweatshirts: {pt:'Sweatshirts', en:'Sweatshirts', es:'Sudaderas', fr:'Sweatshirts', de:'Sweatshirts', it:'Felpe'},
