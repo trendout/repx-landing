@@ -573,6 +573,22 @@ footer{
 (function(){
   var SIZES = ['XS','S','M','L','XL','XXL'];
   var selections = {};
+  var CART_KEY = 'repx_catalogo_cart';
+
+  function saveCartToStorage(){
+    try{
+      localStorage.setItem(CART_KEY, JSON.stringify(selections));
+    }catch(e){}
+  }
+
+  function loadCartFromStorage(){
+    try{
+      var raw = localStorage.getItem(CART_KEY);
+      if(raw){ selections = JSON.parse(raw) || {}; }
+    }catch(e){
+      selections = {};
+    }
+  }
 
   var modal = document.getElementById('productModal');
   var modalName = document.getElementById('modalProductName');
@@ -658,6 +674,7 @@ footer{
     var image = imgTag ? imgTag.src : '';
 
     selections[currentRef] = { ref: currentRef, name: name, image: image, sizes: sizes };
+    saveCartToStorage();
     if(tile){
       var badge = tile.querySelector('.selected-badge');
       if(badge){
@@ -714,6 +731,7 @@ footer{
       removeBtn.innerHTML = '&times;';
       removeBtn.addEventListener('click', function(){
         delete selections[ref];
+        saveCartToStorage();
         var tile = document.querySelector('.cat-item[data-ref="' + ref + '"]');
         if(tile){
           var badge = tile.querySelector('.selected-badge');
@@ -757,6 +775,8 @@ footer{
     window.location.href = mailto;
   });
 
+  loadCartFromStorage();
+
   document.querySelectorAll('.cat-item').forEach(function(tile){
     var nameEl = tile.querySelector('.name');
     var refEl = tile.querySelector('.ref');
@@ -773,6 +793,18 @@ footer{
       openModal(ref, name);
     });
   });
+
+  Object.keys(selections).forEach(function(ref){
+    var tile = document.querySelector('.cat-item[data-ref="' + ref + '"]');
+    if(tile){
+      var badge = tile.querySelector('.selected-badge');
+      if(badge){
+        badge.classList.add('on');
+        badge.textContent = '\u2713';
+      }
+    }
+  });
+  renderCart();
 })();
 </script>
 </body>
