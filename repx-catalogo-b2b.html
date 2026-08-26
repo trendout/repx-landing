@@ -103,6 +103,75 @@ header .wrap{ display:flex; align-items:center; justify-content:space-between; }
   transition:background .2s ease, transform .2s ease;
 }
 .cta-simulator:hover{ background:var(--red-bright); transform:translateY(-1px); }
+
+.cat-item{ cursor:pointer; }
+.selected-badge{
+  position:absolute; top:10px; right:10px; z-index:2;
+  width:28px; height:28px; border-radius:50%; color:var(--ink);
+  background:rgba(0,0,0,0.45); border:1px solid var(--line-bright);
+  font-size:15px; font-weight:600; display:flex; align-items:center; justify-content:center;
+  font-family:'Space Mono',monospace; pointer-events:none;
+  transition:background .2s ease, border-color .2s ease, color .2s ease;
+}
+.selected-badge.on{ background:var(--red); border-color:var(--red); color:#fff; }
+
+.modal-overlay{
+  position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:200;
+  display:none; align-items:center; justify-content:center; padding:20px;
+}
+.modal-overlay.open{ display:flex; }
+.modal-box{
+  background:var(--black-2); border:1px solid var(--line-bright); border-radius:14px;
+  padding:32px; max-width:420px; width:100%; position:relative; max-height:88vh; overflow-y:auto;
+}
+.modal-close{
+  position:absolute; top:14px; right:16px; background:none; border:none; color:var(--dim);
+  font-size:22px; cursor:pointer; line-height:1; padding:4px;
+}
+.modal-close:hover{ color:var(--ink); }
+.modal-product-name{ font-family:'Oswald',sans-serif; font-weight:700; font-size:19px; text-transform:uppercase; margin:0 0 4px; padding-right:24px; }
+.modal-product-ref{ font-family:'Space Mono',monospace; font-size:11px; color:var(--dim); letter-spacing:0.05em; margin-bottom:20px; }
+.modal-sizes{ display:flex; flex-direction:column; gap:10px; margin-bottom:8px; }
+.modal-size-row{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.modal-size-label{ font-family:'Space Mono',monospace; font-size:13px; color:var(--dim); width:44px; }
+.modal-size-input{
+  width:72px; font-family:'Inter',sans-serif; font-size:14px; color:var(--ink);
+  background:var(--black-3); border:1px solid var(--line-bright); border-radius:6px;
+  padding:8px 10px; text-align:center; outline:none;
+}
+.modal-size-input:focus{ border-color:var(--red-bright); }
+.modal-error{ color:var(--red-bright); font-size:12px; font-family:'Space Mono',monospace; margin:10px 0 0; display:none; }
+.modal-save-btn{
+  width:100%; margin-top:20px; font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.05em;
+  text-transform:uppercase; background:var(--red); color:#fff; border:none; border-radius:6px;
+  padding:13px 0; cursor:pointer; transition:background .2s ease;
+}
+.modal-save-btn:hover{ background:var(--red-bright); }
+
+.cart-card{
+  border:1px solid var(--line-bright); border-radius:14px; padding:28px; margin:56px 0 40px; background:var(--black-2);
+}
+.cart-card-head{ margin-bottom:18px; }
+.cart-title{ font-family:'Oswald',sans-serif; font-weight:700; font-size:22px; text-transform:uppercase; margin:0; }
+.cart-item-row{
+  display:flex; justify-content:space-between; align-items:center; gap:16px;
+  padding:14px 0; border-top:1px solid var(--line);
+}
+.cart-item-row:first-child{ border-top:none; }
+.cart-item-img{ width:64px; height:64px; object-fit:cover; border-radius:10px; flex-shrink:0; }
+.cart-item-info{ display:flex; align-items:center; gap:14px; flex:1; min-width:0; }
+.cart-item-name{ font-family:'Inter',sans-serif; font-size:14px; color:var(--ink); font-weight:600; }
+.cart-item-ref{ font-family:'Space Mono',monospace; font-size:11px; color:var(--dim); margin-top:2px; }
+.cart-item-sizes{ font-family:'Space Mono',monospace; font-size:11.5px; color:var(--dim); margin-top:6px; line-height:1.6; }
+.cart-item-remove{ background:none; border:none; color:var(--dimmer); font-size:18px; cursor:pointer; padding:0 4px; line-height:1; }
+.cart-item-remove:hover{ color:var(--red-bright); }
+.cart-quote-btn{
+  width:100%; margin-top:20px; font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.05em;
+  text-transform:uppercase; background:var(--red); color:#fff; border:none; border-radius:6px;
+  padding:14px 0; cursor:pointer; transition:background .2s ease;
+}
+.cart-quote-btn:hover{ background:var(--red-bright); }
+@media (max-width:600px){ .cart-item-row{ flex-direction:column; } }
 .intro .tag{
   display:inline-block; font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.1em;
   text-transform:uppercase; color:var(--red-bright); border:1px solid var(--red-deep);
@@ -259,7 +328,7 @@ footer{
   <div class="intro">
     <span class="tag" data-i18n="introTag">Sem preços · Só para clientes</span>
     <h1 data-i18n="introH1">Catálogo REPX</h1>
-    <p data-i18n="introP">Gama atual por categoria. Para preços, MOQs e prazos de fabrico, fala diretamente connosco.</p>
+    <p data-i18n="introP">Gama atual por categoria. Para preços, MOQs e prazos de fabrico, fala diretamente connosco. Seleciona cada produto que tens interesse, escolhe as quantidades e tamanhos e seleciona o botão "Guardar".</p>
     <a href="repx-simulador.html?lang=pt" target="_blank" rel="noopener" class="cta-simulator" id="ctaSimulator" data-i18n="ctaSimulator">Produzir o Merchandise da Tua Empresa</a>
   </div>
 
@@ -330,6 +399,17 @@ footer{
   <div class="commercial-note" data-i18n="commercialNote">Nota Comercial: Encomenda mínima de 300€. Portes de envio calculados depois do cálculo do volume e peso da encomenda. Em alguns casos os portes de envio podem ser grátis.</div>
 </div>
 
+<div class="wrap">
+  <div class="cart-card" id="cartCard" style="display:none;">
+    <div class="cart-card-head">
+      <div class="eyebrow" data-i18n="cartEyebrow">O Teu Pedido</div>
+      <h3 class="cart-title" data-i18n="cartTitle">Produtos Selecionados</h3>
+    </div>
+    <div id="cartItems"></div>
+    <button class="cart-quote-btn" id="cartQuoteBtn" data-i18n="cartQuoteBtn">Solicitar Orçamento</button>
+  </div>
+</div>
+
 <footer>
   <div class="wrap">
     <div class="footer-row">
@@ -338,6 +418,17 @@ footer{
     </div>
   </div>
 </footer>
+
+<div class="modal-overlay" id="productModal">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+    <div class="modal-product-name" id="modalProductName"></div>
+    <div class="modal-product-ref" id="modalProductRef"></div>
+    <div class="modal-sizes" id="modalSizes"></div>
+    <div class="modal-error" id="modalError" data-i18n="modalError">Tens de escolher 1 unidade por tamanho.</div>
+    <button class="modal-save-btn" id="modalSaveBtn" data-i18n="modalSave">Guardar</button>
+  </div>
+</div>
 
 </div>
 
@@ -352,7 +443,7 @@ footer{
     gateError: {pt:'Introduz um email válido.', en:'Enter a valid email.', es:'Introduce un email válido.', fr:'Indique un email valide.', de:'Gib eine gültige E-Mail-Adresse ein.', it:"Inserisci un'email valida."},
     introTag: {pt:'Sem preços · Só para clientes', en:'No prices · Clients only', es:'Sin precios · Solo clientes', fr:'Sans prix · Clients uniquement', de:'Ohne Preise · Nur für Kunden', it:'Senza prezzi · Solo clienti'},
     introH1: {pt:'Catálogo REPX', en:'REPX Catalog', es:'Catálogo REPX', fr:'Catalogue REPX', de:'REPX-Katalog', it:'Catalogo REPX'},
-    introP: {pt:'Gama atual por categoria. Para preços, MOQs e prazos de fabrico, fala diretamente connosco.', en:'Current range by category. For prices, MOQs and manufacturing lead times, talk to us directly.', es:'Gama actual por categoría. Para precios, MOQs y plazos de fabricación, habla directamente con nosotros.', fr:'Gamme actuelle par catégorie. Pour les prix, MOQ et délais de fabrication, contacte-nous directement.', de:'Aktuelles Sortiment nach Kategorie. Für Preise, MOQs und Fertigungszeiten sprich direkt mit uns.', it:'Gamma attuale per categoria. Per prezzi, MOQ e tempi di produzione, contattaci direttamente.'},
+    introP: {pt:'Gama atual por categoria. Para preços, MOQs e prazos de fabrico, fala diretamente connosco. Seleciona cada produto que tens interesse, escolhe as quantidades e tamanhos e seleciona o botão "Guardar".', en:'Current range by category. For prices, MOQs and manufacturing lead times, talk to us directly. Select each product you\u2019re interested in, choose quantities and sizes, then click "Save".', es:'Gama actual por categoría. Para precios, MOQs y plazos de fabricación, habla directamente con nosotros. Selecciona cada producto que te interese, elige cantidades y tallas y pulsa el botón "Guardar".', fr:'Gamme actuelle par catégorie. Pour les prix, MOQ et délais de fabrication, contacte-nous directement. Sélectionne chaque produit qui t\u2019intéresse, choisis les quantités et tailles, puis clique sur "Enregistrer".', de:'Aktuelles Sortiment nach Kategorie. Für Preise, MOQs und Fertigungszeiten sprich direkt mit uns. Wähle jedes Produkt aus, das dich interessiert, lege Mengen und Größen fest und klicke auf "Speichern".', it:'Gamma attuale per categoria. Per prezzi, MOQ e tempi di produzione, contattaci direttamente. Seleziona ogni prodotto che ti interessa, scegli quantità e taglie e premi il pulsante "Salva".'},
     ctaSimulator: {pt:'Produzir o Merchandise da Tua Empresa', en:'Produce Your Company\u2019s Merchandise', es:'Produce el Merchandising de tu Empresa', fr:'Produis les Goodies de ton Entreprise', de:'Produziere das Merchandise deines Unternehmens', it:'Produci il Merchandising della tua Azienda'},
     commercialNote: {
       pt:'Nota Comercial: Encomenda mínima de 300€. Portes de envio calculados depois do cálculo do volume e peso da encomenda. Em alguns casos os portes de envio podem ser grátis.',
@@ -374,6 +465,11 @@ footer{
       de:'Mindestbestellung: <strong>1 Stück</strong> pro Modell und Größe',
       it:'Ordine minimo: <strong>1 unità</strong> per modello e taglia',
     },
+    cartEyebrow: {pt:'O Teu Pedido', en:'Your Order', es:'Tu Pedido', fr:'Ta Commande', de:'Deine Bestellung', it:'Il Tuo Ordine'},
+    cartTitle: {pt:'Produtos Selecionados', en:'Selected Products', es:'Productos Seleccionados', fr:'Produits Sélectionnés', de:'Ausgewählte Produkte', it:'Prodotti Selezionati'},
+    cartQuoteBtn: {pt:'Solicitar Orçamento', en:'Request Quote', es:'Solicitar Presupuesto', fr:'Demander un Devis', de:'Angebot Anfordern', it:'Richiedi Preventivo'},
+    modalSave: {pt:'Guardar', en:'Save', es:'Guardar', fr:'Enregistrer', de:'Speichern', it:'Salva'},
+    modalError: {pt:'Tens de escolher 1 unidade por tamanho.', en:'You must choose 1 unit per size.', es:'Tienes que elegir 1 unidad por talla.', fr:'Tu dois choisir 1 unité par taille.', de:'Du musst 1 Stück pro Größe wählen.', it:'Devi scegliere 1 unità per taglia.'},
   };
 
   let currentLang = 'pt';
@@ -456,6 +552,206 @@ footer{
   });
   input.addEventListener('keydown', function(e){
     if(e.key === 'Enter') btn.click();
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var SIZES = ['XS','S','M','L','XL','XXL'];
+  var selections = {};
+
+  var modal = document.getElementById('productModal');
+  var modalName = document.getElementById('modalProductName');
+  var modalRef = document.getElementById('modalProductRef');
+  var modalSizesEl = document.getElementById('modalSizes');
+  var modalError = document.getElementById('modalError');
+  var modalSaveBtn = document.getElementById('modalSaveBtn');
+  var modalClose = document.getElementById('modalClose');
+  var cartCard = document.getElementById('cartCard');
+  var cartItemsEl = document.getElementById('cartItems');
+  var cartQuoteBtn = document.getElementById('cartQuoteBtn');
+
+  var currentRef = null;
+
+  function getCurrentLang(){
+    return document.documentElement.getAttribute('lang') || 'pt';
+  }
+
+  function openModal(ref, name){
+    currentRef = ref;
+    modalName.textContent = name;
+    modalRef.textContent = 'REF. ' + ref;
+    modalError.style.display = 'none';
+
+    var existing = selections[ref];
+    modalSizesEl.innerHTML = '';
+    SIZES.forEach(function(size){
+      var row = document.createElement('div');
+      row.className = 'modal-size-row';
+      var label = document.createElement('span');
+      label.className = 'modal-size-label';
+      label.textContent = size;
+      var input = document.createElement('input');
+      input.type = 'number';
+      input.min = '0';
+      input.className = 'modal-size-input';
+      input.dataset.size = size;
+      input.value = existing ? (existing.sizes[size] || '') : '1';
+      row.appendChild(label);
+      row.appendChild(input);
+      modalSizesEl.appendChild(row);
+    });
+
+    modal.classList.add('open');
+  }
+
+  function closeModal(){
+    modal.classList.remove('open');
+    currentRef = null;
+  }
+
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e){
+    if(e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+
+  modalSaveBtn.addEventListener('click', function(){
+    var inputs = modalSizesEl.querySelectorAll('.modal-size-input');
+    var sizes = {};
+    var valid = true;
+    inputs.forEach(function(input){
+      var val = parseInt(input.value, 10);
+      if(!val || val < 1){ valid = false; }
+      sizes[input.dataset.size] = val || 0;
+    });
+
+    if(!valid){
+      modalError.style.display = 'block';
+      return;
+    }
+
+    var tile = document.querySelector('.cat-item[data-ref="' + currentRef + '"]');
+    var name = tile ? tile.dataset.name : currentRef;
+    var imgTag = tile ? tile.querySelector('img') : null;
+    var image = imgTag ? imgTag.src : '';
+
+    selections[currentRef] = { ref: currentRef, name: name, image: image, sizes: sizes };
+    if(tile){
+      var badge = tile.querySelector('.selected-badge');
+      if(badge){
+        badge.classList.add('on');
+        badge.textContent = '\u2713';
+      }
+    }
+
+    renderCart();
+    closeModal();
+  });
+
+  function renderCart(){
+    var refs = Object.keys(selections);
+    if(refs.length === 0){
+      cartCard.style.display = 'none';
+      return;
+    }
+    cartCard.style.display = 'block';
+    cartItemsEl.innerHTML = '';
+    refs.forEach(function(ref){
+      var item = selections[ref];
+      var row = document.createElement('div');
+      row.className = 'cart-item-row';
+
+      var info = document.createElement('div');
+      var nameEl = document.createElement('div');
+      nameEl.className = 'cart-item-name';
+      nameEl.textContent = item.name;
+      var refEl = document.createElement('div');
+      refEl.className = 'cart-item-ref';
+      refEl.textContent = 'REF. ' + item.ref;
+      var sizesEl = document.createElement('div');
+      sizesEl.className = 'cart-item-sizes';
+      sizesEl.textContent = SIZES.map(function(s){ return s + ': ' + (item.sizes[s] || 0); }).join('   \u00b7   ');
+      info.appendChild(nameEl);
+      info.appendChild(refEl);
+      info.appendChild(sizesEl);
+
+      var imgEl = document.createElement('img');
+      imgEl.className = 'cart-item-img';
+      imgEl.src = item.image;
+      imgEl.alt = item.name;
+
+      var infoWrap = document.createElement('div');
+      infoWrap.className = 'cart-item-info';
+      infoWrap.appendChild(imgEl);
+      infoWrap.appendChild(info);
+
+      var removeBtn = document.createElement('button');
+      removeBtn.className = 'cart-item-remove';
+      removeBtn.innerHTML = '&times;';
+      removeBtn.addEventListener('click', function(){
+        delete selections[ref];
+        var tile = document.querySelector('.cat-item[data-ref="' + ref + '"]');
+        if(tile){
+          var badge = tile.querySelector('.selected-badge');
+          if(badge){
+            badge.classList.remove('on');
+            badge.textContent = '+';
+          }
+        }
+        renderCart();
+      });
+
+      row.appendChild(infoWrap);
+      row.appendChild(removeBtn);
+      cartItemsEl.appendChild(row);
+    });
+  }
+
+  cartQuoteBtn.addEventListener('click', function(){
+    var lang = getCurrentLang();
+    var mail = {
+      pt: { subject:'Pedido de Or\u00e7amento \u2014 Cat\u00e1logo REPX', greeting:'Ol\u00e1,', intro:'Gostaria de pedir or\u00e7amento para os seguintes produtos:', closing:'Obrigado.' },
+      en: { subject:'Quote Request \u2014 REPX Catalog', greeting:'Hello,', intro:'I would like to request a quote for the following products:', closing:'Thank you.' },
+      es: { subject:'Solicitud de Presupuesto \u2014 Cat\u00e1logo REPX', greeting:'Hola,', intro:'Me gustar\u00eda solicitar presupuesto para los siguientes productos:', closing:'Gracias.' },
+      fr: { subject:'Demande de Devis \u2014 Catalogue REPX', greeting:'Bonjour,', intro:'Je souhaiterais demander un devis pour les produits suivants\u00a0:', closing:'Merci.' },
+      de: { subject:'Angebotsanfrage \u2014 REPX-Katalog', greeting:'Hallo,', intro:'Ich m\u00f6chte ein Angebot f\u00fcr folgende Produkte anfordern:', closing:'Danke.' },
+      it: { subject:'Richiesta Preventivo \u2014 Catalogo REPX', greeting:'Ciao,', intro:'Vorrei richiedere un preventivo per i seguenti prodotti:', closing:'Grazie.' }
+    };
+    var t = mail[lang] || mail.pt;
+
+    var lines = [t.greeting, '', t.intro, ''];
+    Object.keys(selections).forEach(function(ref){
+      var item = selections[ref];
+      lines.push('- ' + item.name + ' (REF. ' + item.ref + ')');
+      lines.push('  ' + SIZES.map(function(s){ return s + ': ' + (item.sizes[s] || 0); }).join(', '));
+      lines.push('');
+    });
+    lines.push(t.closing);
+
+    var body = lines.join('\n');
+    var mailto = 'mailto:rscglobaldist@gmail.com?subject=' + encodeURIComponent(t.subject) + '&body=' + encodeURIComponent(body);
+    window.location.href = mailto;
+  });
+
+  document.querySelectorAll('.cat-item').forEach(function(tile){
+    var nameEl = tile.querySelector('.name');
+    var refEl = tile.querySelector('.ref');
+    if(!nameEl || !refEl) return;
+    var name = nameEl.textContent.trim();
+    var ref = refEl.textContent.replace('REF.', '').trim();
+    tile.dataset.ref = ref;
+    tile.dataset.name = name;
+    var badge = document.createElement('span');
+    badge.className = 'selected-badge';
+    badge.textContent = '+';
+    tile.appendChild(badge);
+    tile.addEventListener('click', function(){
+      openModal(ref, name);
+    });
   });
 })();
 </script>
