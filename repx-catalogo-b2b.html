@@ -172,6 +172,16 @@ header .wrap{ display:flex; align-items:center; justify-content:space-between; }
 }
 .cart-quote-btn:hover{ background:var(--red-bright); }
 @media (max-width:600px){ .cart-item-row{ flex-direction:column; } }
+
+.floating-cart-btn{
+  display:none; position:fixed; bottom:24px; left:50%; transform:translateX(-50%); z-index:150;
+  font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.05em; text-transform:uppercase;
+  background:var(--red); color:#fff; border:none; border-radius:999px;
+  padding:14px 26px; cursor:pointer; box-shadow:0 10px 28px rgba(0,0,0,0.45);
+  transition:background .2s ease, transform .2s ease;
+}
+.floating-cart-btn:hover{ background:var(--red-bright); }
+.floating-cart-btn.show{ display:block; }
 .intro .tag{
   display:inline-block; font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.1em;
   text-transform:uppercase; color:var(--red-bright); border:1px solid var(--red-deep);
@@ -430,6 +440,8 @@ footer{
   </div>
 </div>
 
+<button class="floating-cart-btn" id="floatingCartBtn" data-i18n="floatingCartBtn">Ver Resumo do Pedido</button>
+
 </div>
 
 <script>
@@ -470,6 +482,7 @@ footer{
     cartQuoteBtn: {pt:'Solicitar Orçamento', en:'Request Quote', es:'Solicitar Presupuesto', fr:'Demander un Devis', de:'Angebot Anfordern', it:'Richiedi Preventivo'},
     modalSave: {pt:'Guardar', en:'Save', es:'Guardar', fr:'Enregistrer', de:'Speichern', it:'Salva'},
     modalError: {pt:'Tens de escolher 1 unidade por tamanho.', en:'You must choose 1 unit per size.', es:'Tienes que elegir 1 unidad por talla.', fr:'Tu dois choisir 1 unité par taille.', de:'Du musst 1 Stück pro Größe wählen.', it:'Devi scegliere 1 unità per taglia.'},
+    floatingCartBtn: {pt:'Ver Resumo do Pedido', en:'View Order Summary', es:'Ver Resumen del Pedido', fr:'Voir le Résumé de la Commande', de:'Bestellübersicht Ansehen', it:'Vedi Riepilogo Ordine'},
   };
 
   let currentLang = 'pt';
@@ -571,6 +584,11 @@ footer{
   var cartCard = document.getElementById('cartCard');
   var cartItemsEl = document.getElementById('cartItems');
   var cartQuoteBtn = document.getElementById('cartQuoteBtn');
+  var floatingCartBtn = document.getElementById('floatingCartBtn');
+
+  floatingCartBtn.addEventListener('click', function(){
+    cartCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 
   var currentRef = null;
 
@@ -656,9 +674,11 @@ footer{
     var refs = Object.keys(selections);
     if(refs.length === 0){
       cartCard.style.display = 'none';
+      floatingCartBtn.classList.remove('show');
       return;
     }
     cartCard.style.display = 'block';
+    floatingCartBtn.classList.add('show');
     cartItemsEl.innerHTML = '';
     refs.forEach(function(ref){
       var item = selections[ref];
